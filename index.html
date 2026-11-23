@@ -289,7 +289,7 @@ footer .big{width:100%;font-family:"Instrument Serif",Georgia,serif;font-weight:
 <main>
 <div class="top" id="top">
   <div class="wrap">
-    <div class="strip"><span>Professional Portfolio</span><b>Data Analysis &middot; Business Analysis &middot; Supply Chain</b></div>
+    <div class="strip"><span>Professional Portfolio</span><b>Data Analysis &middot; Business Analysis &middot; Project Management &middot; Supply Chain</b></div>
     <h1 class="first">Hello, I&#39;m</h1>
     <div class="stage">
       <em class="side l">Gracela</em>
@@ -320,7 +320,8 @@ footer .big{width:100%;font-family:"Instrument Serif",Georgia,serif;font-weight:
       <div class="acards rv">
         <div class="acard"><span class="no">01</span><h3>Data Analysis</h3><p data-t="a1"></p></div>
         <div class="acard on"><span class="no">02</span><h3>Business Analysis</h3><p data-t="a2"></p></div>
-        <div class="acard"><span class="no">03</span><h3>Supply Chain</h3><p data-t="a3"></p></div>
+        <div class="acard"><span class="no">03</span><h3>Project Management</h3><p data-t="a4"></p></div>
+        <div class="acard"><span class="no">04</span><h3>Supply Chain</h3><p data-t="a3"></p></div>
       </div>
     </div>
   </div>
@@ -414,7 +415,7 @@ document.querySelectorAll(".rv").forEach(el=>io.observe(el));})();
    DATA. Teks dua bahasa ditulis sebagai {id:"...", en:"..."}.
    Teks yang sama di kedua bahasa cukup ditulis biasa.
    ===================================================================== */
-const ROLES=["Data Analyst","Business Analyst","Supply Chain Analyst"];
+const ROLES=["Data Analyst","Business Analyst","Project Manager","Supply Chain Analyst"];
 
 const T={
  nav_about:{id:"Tentang",en:"About"},nav_proj:{id:"Proyek",en:"Projects"},nav_exp:{id:"Pengalaman",en:"Experience"},nav_contact:{id:"Kontak",en:"Contact"},
@@ -429,6 +430,7 @@ const T={
  about_tag:{id:"Mengubah data menjadi keputusan, dari angka penjualan hingga rantai pasok.",en:"Turning data into decisions, from sales numbers to the supply chain."},
  a1:{id:"SQL, Power BI, dan Python untuk insight yang bisa ditindaklanjuti.",en:"SQL, Power BI, and Python for actionable insight."},
  a2:{id:"Requirement, pemetaan proses BPMN, dan user story.",en:"Requirements, BPMN process mapping, and user stories."},
+ a4:{id:"Membangun aplikasi internal, mengelola bug dan permintaan fitur, serta melatih user.",en:"Building in-house applications, managing bugs and change requests, and training users."},
  a3:{id:"Demand forecasting, perencanaan inventory, dan optimasi distribusi.",en:"Demand forecasting, inventory planning, and distribution optimization."},
  about_p1:{id:"Saya lulusan Teknik Industri Universitas Indonesia. Karier saya dimulai di supply chain, lalu berkembang ke analisis data dan proses bisnis.",en:"I graduated in Industrial Engineering from Universitas Indonesia. My career started in supply chain and grew into data and business process analysis."},
  about_p2:{id:"Saat ini saya bekerja sebagai Data Analyst di perusahaan retail nasional. Saya mencari peran Data Analyst, Business Analyst, atau Supply Chain Analyst di organisasi yang menjadikan data sebagai dasar keputusan.",en:"I currently work as a Data Analyst at a national retail company. I am looking for a Data Analyst, Business Analyst, or Supply Chain Analyst role in an organization that makes decisions based on data."},
@@ -437,7 +439,7 @@ const T={
  i_lang:{id:"Bahasa",en:"Languages"},i_lang_v:{id:"Indonesia (native), English (profesional)",en:"Indonesian (native), English (professional)"},
  i_avail:{id:"Ketersediaan",en:"Availability"},i_avail_v:{id:"Satu bulan pemberitahuan",en:"One month notice"},
  sk_label:{id:"Keahlian",en:"Skills"},sk_h:{id:"Tools & Metode",en:"Tools & Methods"},
- sk_sub:{id:"Tools dan metode yang saya gunakan untuk analisis data, proses bisnis, dan rantai pasok.",en:"Tools and methods I use across data analysis, business processes, and the supply chain."},
+ sk_sub:{id:"Tools dan metode yang saya gunakan untuk analisis data, proses bisnis, manajemen proyek, dan rantai pasok.",en:"Tools and methods I use across data analysis, business processes, project management, and the supply chain."},
  cat:{id:"Kategori",en:"Category"},tools_n:"tools",sk_more:{id:"Lihat pengalaman kerja ↓",en:"Explore professional experience ↓"},
  adv:{id:"Mahir",en:"Advanced"},mid:{id:"Menengah",en:"Intermediate"},
  proj_h:{id:"Studi kasus pilihan",en:"Selected case studies"},all:{id:"Semua",en:"All"},
@@ -471,15 +473,26 @@ const SKILLS=[
  [{id:"Data & Analitik",en:"Data & Analytics"},[["SQL","adv"],["Excel / Power Query","adv"],["Python (Pandas)","mid"],[{id:"Statistik",en:"Statistics"},"mid"]]],
  ["Visualisasi & BI",[["Power BI / DAX","adv"],["Tableau","mid"],["Looker Studio","mid"]]],
  ["Business Analysis",[["Requirement Gathering","adv"],["BPMN","adv"],["User Story & BRD","adv"],["Jira","mid"]]],
+ ["Project Management",[["Claude (AI-assisted development)","adv"],["VS Code","mid"],["GitHub","mid"],["Bug Tracking & UAT","adv"],["User Training","adv"]]],
  ["Supply Chain",[["Demand Forecasting","adv"],["Inventory Planning","adv"],["SAP MM","mid"],["Procurement","mid"]]]
 ];
 SKILLS[1][0]={id:"Visualisasi & BI",en:"Visualization & BI"};
 
 /* Ikon tools dari simpleicons.org (nama slug). Tool tanpa ikon tampil sebagai inisial. */
-const ICON={"SQL":"mysql","Excel / Power Query":"microsoftexcel","Python (Pandas)":"pandas","Power BI / DAX":"powerbi","Tableau":"tableau","Looker Studio":"looker","Jira":"jira","SAP MM":"sap"};
-const CATS=["Data Analysis","Business Analysis","Supply Chain"];
+const ICON={"SQL":"mysql","Excel / Power Query":"microsoftexcel","Python (Pandas)":"pandas","Power BI / DAX":"powerbi","Tableau":"tableau","Looker Studio":"looker","Jira":"jira","SAP MM":"sap","Claude (AI-assisted development)":"claude","VS Code":"visualstudiocode","GitHub":"github"};
+const CATS=["Data Analysis","Business Analysis","Project Management","Supply Chain"];
 
 const P=[
+ {id:"eppm-kalbe",cat:"Project Management",ch:"flow",n:"EPPM",tools:["Claude","VS Code","GitHub","Excel"],role:"Data Analyst Intern (Project Management)",
+  t:{id:"EPPM: Aplikasi ITSM Pengganti Ivanti di Kalbe Farma",en:"EPPM: In-house ITSM App Replacing Ivanti at Kalbe Farma"},
+  s:{id:"Membangun aplikasi IT service management internal dengan Claude untuk menggantikan Ivanti.",en:"Building an in-house IT service management application with Claude to replace Ivanti."},
+  nl:{id:"Aplikasi internal dibangun dengan AI",en:"In-house app built with AI"},dur:{id:"Agustus 2026 – sekarang",en:"August 2026 – present"},
+  ex:{id:["Membangun EPPM dengan Claude di VS Code dan GitHub","Mengelola log bug bersama QA dan atasan, setiap perbaikan dites ulang sampai disetujui","Melatih user agar siap beralih dari Ivanti ke EPPM"],en:["Built EPPM with Claude in VS Code and GitHub","Managed a bug log with QA and supervisors, retesting every fix until approved","Trained users to move from Ivanti to EPPM"]},
+  ctx:{id:"Kalbe Farma memakai Ivanti untuk mengelola tiket layanan IT dan memutuskan membangun aplikasi sendiri, EPPM, sebagai penggantinya.",en:"Kalbe Farma used Ivanti to manage IT service tickets and decided to build its own application, EPPM, as a replacement."},
+  data:{id:"Data tiket layanan IT dari Ivanti yang dimigrasikan ke EPPM, serta masukan user dari meeting mingguan dan demo.",en:"IT service ticket data migrated from Ivanti to EPPM, plus user feedback from weekly meetings and demos."},
+  steps:{id:["Menyiapkan Claude di VS Code yang terhubung ke GitHub, lalu membangun fitur EPPM dengan AI-assisted development","Memperbaiki alur aplikasi yang salah berdasarkan meeting mingguan dengan user","Mencatat setiap bug dari QA dan atasan di log Excel: pelapor, penyebab, status, dan yang memperbaiki","Menilai permintaan fitur baru terhadap SOP bersama atasan, lalu mengerjakan yang disetujui","Memigrasikan data dari Ivanti dan melatih user cara memakai EPPM"],en:["Set up Claude in VS Code connected to GitHub, then built EPPM features through AI-assisted development","Fixed incorrect application workflows based on weekly user meetings","Logged every bug from QA and supervisors in an Excel tracker: reporter, root cause, status, and resolver","Assessed new feature requests against SOPs with my supervisor and implemented the approved ones","Migrated data from Ivanti and trained users on how to use EPPM"]},
+  res:[["EPPM",{id:"Pengganti Ivanti",en:"Ivanti replacement"}],[{id:"Mingguan",en:"Weekly"},{id:"Review dengan user",en:"User reviews"}],["Claude",{id:"Dibangun dengan AI",en:"Built with AI"}]],
+  rec:{id:"Lanjutkan siklus feedback mingguan dan pertahankan log bug sebagai dokumentasi kualitas aplikasi setelah go-live.",en:"Keep the weekly feedback cycle and maintain the bug log as quality documentation after go-live."}},
  {id:"penjualan-retail",cat:"Data Analysis",ch:"bar",n:"+12%",tools:["SQL","Power BI","Excel"],role:"Data Analyst",
   t:{id:"Analisis Penjualan Retail Nasional",en:"National Retail Sales Analysis"},
   s:{id:"Menemukan pendorong penurunan penjualan dari 1,2 juta transaksi di 85 toko.",en:"Finding the drivers of declining sales across 1.2 million transactions in 85 stores."},
