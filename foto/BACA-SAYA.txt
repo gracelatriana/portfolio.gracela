@@ -1,1 +1,1 @@
-Simpan foto profil di sini dengan nama foto.jpg
+Simpan foto profil di sini dengan nama foto.png (background sudah dihapus/transparan)

@@ -2,10 +2,10 @@
 # Dipakai untuk upload file lewat browser.
 media:
   - name: foto
-    label: Foto Profil (nama file harus foto.jpg)
+    label: Foto Profil (nama file harus foto.png)
     input: foto
     output: foto
-    extensions: [jpg, jpeg]
+    extensions: [png]
   - name: cv
     label: CV (CV-ID.pdf dan CV-EN.pdf)
     input: cv
