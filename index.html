@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raka Pratama | Data & Business Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--alt:#F7F8FA;--text:#1A1F2B;--muted:#5F6B7A;--line:#E5E8EC;--navy:#0B2545;--acc:#1F6FEB}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:Inter,system-ui,sans-serif;font-size:16.5px;line-height:1.7;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;color:var(--navy);line-height:1.2}
+h1{font-size:clamp(2.4rem,5vw,3.5rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,3vw,2.2rem)}
+h3{font-size:1.25rem}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.num{font-variant-numeric:tabular-nums;font-weight:700}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:120px 0}
+section.alt{background:var(--alt)}
+@media(max-width:760px){section{padding:72px 0}}
+.label{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.ico{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.15rem;color:var(--navy)}
+.brand:hover{text-decoration:none}
+.menu{display:flex;align-items:center;gap:28px}
+.menu a{color:var(--muted);font-size:.92rem;font-weight:500}
+.menu a:hover{color:var(--navy);text-decoration:none}
+.toggle{display:none;background:none;border:1px solid var(--line);border-radius:4px;padding:6px 10px;cursor:pointer;color:var(--navy)}
+@media(max-width:820px){.menu{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:16px 24px;gap:14px}.menu.open{display:flex}.toggle{display:block}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:4px;font-weight:600;font-size:.93rem;border:1px solid var(--navy);cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
+.btn:hover{text-decoration:none}
+.btn-solid{background:var(--navy);color:#fff}
+.btn-solid:hover{background:#13345f}
+.btn-line{background:#fff;color:var(--navy)}
+.btn-line:hover{background:var(--alt)}
+.btn-sm{padding:7px 14px;font-size:.85rem}
+
+/* hero */
+.hero{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center;padding:96px 0 104px}
+.typed{font-size:1.2rem;color:var(--muted);height:2rem;margin:14px 0 22px}
+.typed b{color:var(--navy);font-weight:600}
+.caret{display:inline-block;width:1.5px;height:1.15em;background:var(--navy);vertical-align:-3px;margin-left:2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{max-width:560px;color:var(--muted);font-size:1.08rem;margin-bottom:32px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.facts{display:flex;flex-wrap:wrap;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted)}
+.facts span{padding:0 18px;border-left:1px solid var(--line)}
+.facts span:first-child{padding-left:0;border-left:none}
+.facts b{color:var(--text)}
+.photo{aspect-ratio:4/5;border-radius:6px;background:#E9EDF2;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#8A96A6;font-size:.85rem;gap:10px}
+.photo svg{width:64px;height:64px;stroke:#A9B3C1;fill:none;stroke-width:1.2}
+@media(max-width:860px){.hero{grid-template-columns:1fr;gap:40px;padding:56px 0 72px}.photo{max-width:320px;order:-1}.facts span{padding:4px 12px}}
+
+/* two col section head */
+.split{display:grid;grid-template-columns:4fr 8fr;gap:64px}
+.split p{max-width:640px;color:#384252;margin-bottom:16px}
+.info{margin-top:32px;border-top:1px solid var(--line)}
+.info div{display:grid;grid-template-columns:180px 1fr;padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.info dt{color:var(--muted)}
+@media(max-width:760px){.split{grid-template-columns:1fr;gap:20px}.info div{grid-template-columns:130px 1fr}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--navy);margin-top:40px}
+.skills>div{padding:24px 24px 8px 0}
+.skills>div+div{padding-left:24px;border-left:1px solid var(--line)}
+.skills h3{font-family:Inter,sans-serif;font-size:.95rem;font-weight:700;margin-bottom:14px}
+.skills li{list-style:none;display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.skills li span{color:var(--muted);font-size:.8rem}
+@media(max-width:900px){.skills{grid-template-columns:1fr 1fr}.skills>div:nth-child(3){padding-left:0;border-left:none}}
+@media(max-width:560px){.skills{grid-template-columns:1fr}.skills>div+div{padding-left:0;border-left:none}}
+
+/* projects */
+.tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin:36px 0 36px;overflow-x:auto}
+.tabs button{background:none;border:none;font-family:inherit;font-size:.95rem;font-weight:500;color:var(--muted);padding:12px 0;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:pointer;transition:border-color .25s;display:block;color:inherit}
+.card:hover{border-color:var(--navy);text-decoration:none}
+.thumb{position:relative;aspect-ratio:16/10;background:#F3F5F8;border-bottom:1px solid var(--line)}
+.thumb svg{width:100%;height:100%;display:block}
+.ov{position:absolute;inset:0;background:rgba(255,255,255,.93);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;text-align:center}
+.ov .num{font-size:2.6rem;color:var(--navy);line-height:1.1}
+.ov small{color:var(--muted);font-size:.92rem;margin:4px 0 12px}
+.ov em{font-style:normal;color:var(--acc);font-size:.9rem;font-weight:500}
+.card:hover .ov{opacity:1}
+.cbody{padding:22px 24px 24px}
+.cbody h3{margin:6px 0 8px}
+.cbody p{color:var(--muted);font-size:.95rem}
+.mres{display:none;margin-top:12px;font-size:.92rem;color:var(--navy)}
+.ctags{margin-top:14px;font-size:.82rem;color:var(--muted)}
+@media(hover:none){.ov{display:none}.mres{display:block}}
+
+/* case study page */
+#case{display:none}
+body.case-open main>section, body.case-open main>.top{display:none}
+body.case-open #case{display:block}
+.cs{max-width:760px;margin:0 auto;padding:64px 24px 96px}
+.back{font-size:.9rem;display:inline-flex;gap:6px;align-items:center;margin-bottom:36px}
+.cs h1{font-size:clamp(2rem,4vw,2.7rem);margin:10px 0 18px}
+.meta{display:flex;flex-wrap:wrap;font-size:.92rem;color:var(--muted);padding-bottom:28px;border-bottom:1px solid var(--line)}
+.meta span{padding:0 16px;border-left:1px solid var(--line)}
+.meta span:first-child{padding-left:0;border-left:none}
+.meta b{color:var(--text);font-weight:600}
+.exec{background:var(--alt);border-left:3px solid var(--navy);padding:24px 28px;margin:36px 0;border-radius:0 4px 4px 0}
+.exec h3{font-family:Inter,sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.exec li{margin-left:18px;padding:3px 0}
+.cs h2{font-size:1.5rem;margin:44px 0 12px}
+.cs p,.cs li{color:#384252}
+.cs ol{padding-left:22px}.cs ol li{padding:4px 0}
+.fig{margin:28px 0 8px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#F3F5F8;aspect-ratio:16/9}
+.fig svg{width:100%;height:100%;display:block}
+.cap{font-size:.85rem;color:var(--muted)}
+.res{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--navy);border-bottom:1px solid var(--line);margin-top:16px}
+.res div{padding:22px 16px 20px 0}
+.res div+div{padding-left:20px;border-left:1px solid var(--line)}
+.res .num{display:block;font-size:2rem;color:var(--navy);line-height:1.2}
+.res small{color:var(--muted);font-size:.88rem}
+@media(max-width:560px){.res{grid-template-columns:1fr}.res div+div{padding-left:0;border-left:none;border-top:1px solid var(--line)}}
+.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:.95rem}
+.links a{display:inline-flex;gap:6px;align-items:center}
+.pn{display:flex;justify-content:space-between;gap:20px;margin-top:48px;font-size:.92rem}
+.pn a{max-width:48%}
+.pn small{display:block;color:var(--muted);font-size:.78rem}
+
+/* experience */
+.xp{margin-top:40px;border-top:1px solid var(--line)}
+.xp article{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--line)}
+.xp time{color:var(--muted);font-size:.92rem}
+.xp h3{font-family:Inter,sans-serif;font-size:1.05rem;font-weight:700;color:var(--text)}
+.xp .org{color:var(--muted);font-size:.95rem;margin-bottom:8px}
+.xp li{margin-left:18px;color:#384252;font-size:.96rem;padding:2px 0}
+.certs h3{margin:64px 0 8px}
+.certs table{width:100%;border-collapse:collapse;font-size:.94rem;margin-top:16px}
+.certs th{text-align:left;font-weight:600;color:var(--muted);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 12px 10px 0;border-bottom:2px solid var(--navy)}
+.certs td{padding:14px 12px 14px 0;border-bottom:1px solid var(--line)}
+@media(max-width:700px){.xp article{grid-template-columns:1fr;gap:6px}.certs .hide{display:none}}
+
+/* cv + contact */
+.cvgrid{display:grid;grid-template-columns:5fr 7fr;gap:64px;margin-top:40px;align-items:start}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;margin:22px 0;overflow:hidden}
+.seg button{background:#fff;border:none;padding:8px 18px;font-family:inherit;font-size:.9rem;cursor:pointer;color:var(--muted)}
+.seg button.on{background:var(--navy);color:#fff}
+.cvnote{font-size:.85rem;color:var(--muted);margin-top:14px}
+.sheet{background:#fff;border:1px solid var(--line);border-radius:4px;padding:36px 40px;box-shadow:0 1px 3px rgba(16,24,40,.06);font-size:.8rem;line-height:1.55;max-height:540px;overflow:auto}
+.sheet h4{font-family:"Source Serif 4",serif;font-size:1.5rem;color:var(--navy)}
+.sheet .r{color:var(--muted);margin-bottom:2px}
+.sheet .c{color:var(--muted);font-size:.74rem;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.sheet h5{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:16px 0 6px}
+.sheet .row{display:flex;justify-content:space-between;font-weight:600}
+.sheet .row span{font-weight:400;color:var(--muted)}
+.sheet ul{padding-left:16px;margin:2px 0 8px}
+.contact{display:grid;grid-template-columns:5fr 7fr;gap:64px;margin-top:80px;padding-top:56px;border-top:1px solid var(--line)}
+.clist div{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.clist div:first-child{border-top:1px solid var(--line)}
+.clist .k{width:84px;color:var(--muted)}
+.copy{margin-left:auto;background:none;border:1px solid var(--line);border-radius:4px;padding:4px 10px;font-size:.8rem;cursor:pointer;color:var(--navy);font-family:inherit}
+.copy:hover{background:var(--alt)}
+form{display:grid;gap:16px}
+form label{font-size:.88rem;font-weight:500;display:grid;gap:6px}
+input,textarea{font:inherit;font-size:.95rem;padding:11px 13px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--text)}
+input:focus,textarea:focus{outline:none;border-color:var(--navy)}
+.sent{display:none;font-size:.9rem;color:var(--navy);background:var(--alt);padding:12px 14px;border-radius:4px}
+@media(max-width:860px){.cvgrid,.contact{grid-template-columns:1fr;gap:32px}.sheet{padding:24px}}
+
+.cm{position:fixed;inset:0;z-index:50;background:rgba(11,37,69,.45);display:none;align-items:center;justify-content:center;padding:24px}
+.cm.open{display:flex}
+.cm-box{background:#fff;border-radius:6px;width:100%;max-width:880px;max-height:92vh;display:flex;flex-direction:column;border:1px solid var(--line);box-shadow:0 12px 40px rgba(11,37,69,.2)}
+.cm-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 24px;border-bottom:1px solid var(--line)}
+.cm-head h3{font-size:1.15rem}
+.cm-body{flex:1;background:var(--alt);aspect-ratio:1.414;max-height:70vh}
+.cm-body iframe{width:100%;height:100%;border:0;display:block}
+.cm-empty{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:.92rem;padding:24px;line-height:1.8}
+.cm-foot{padding:14px 24px;border-top:1px solid var(--line);font-size:.92rem}
+.cm-foot a{display:inline-flex;gap:6px;align-items:center}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.lang button{background:#fff;border:none;padding:5px 10px;font:600 .78rem Inter,sans-serif;color:var(--muted);cursor:pointer;letter-spacing:.04em}
+.lang button.on{background:var(--navy);color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="brand" data-home>Raka Pratama</a>
+    <nav class="menu" id="menu">
+      <a href="#tentang" data-home data-t="nav_about"></a>
+      <a href="#proyek" data-home data-t="nav_proj"></a>
+      <a href="#pengalaman" data-home data-t="nav_exp"></a>
+      <a href="#cv" data-home>CV</a>
+      <a href="#kontak" data-home data-t="nav_contact"></a>
+      <div class="lang" role="group" aria-label="Language"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+      <a href="#cv" class="btn btn-line btn-sm" data-home data-t="dl_cv"></a>
+    </nav>
+    <button class="toggle" id="toggle" aria-label="Menu">Menu</button>
+  </div>
+</header>
+
+<main>
+<div class="top" id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="label" data-t="hero_label"></div>
+      <h1 style="margin-top:14px">Raka Pratama</h1>
+      <div class="typed"><span data-t="iam"></span> <b id="typed"></b><span class="caret"></span></div>
+      <p class="lead" data-t="hero_lead"></p>
+      <div class="cta">
+        <a href="#proyek" class="btn btn-solid" data-home data-t="see_proj"></a>
+        <a href="#cv" class="btn btn-line" data-home data-t="dl_cv"></a>
+        <a href="#sertifikat" class="btn btn-line" data-home data-t="certs_btn"></a>
+      </div>
+      <div class="facts">
+        <span><b class="num">3+</b> <span data-t="f_years" style="padding:0;border:0"></span></span>
+        <span><b class="num">18</b> <span data-t="f_proj" style="padding:0;border:0"></span></span>
+        <span><b class="num">7</b> <span data-t="f_cert" style="padding:0;border:0"></span></span>
+        <span data-t="f_hybrid"></span>
+      </div>
+    </div>
+    <div class="photo">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      <span data-t="photo"></span>
+    </div>
+  </div>
+</div>
+
+<section class="alt" id="tentang">
+  <div class="wrap split">
+    <div><div class="label" data-t="nav_about"></div><h2 style="margin-top:10px" data-t="about_h"></h2></div>
+    <div>
+      <p data-t="about_p1"></p>
+      <p data-t="about_p2"></p>
+      <dl class="info">
+        <div><dt data-t="i_edu"></dt><dd data-t="i_edu_v"></dd></div>
+        <div><dt data-t="i_loc"></dt><dd data-t="i_loc_v"></dd></div>
+        <div><dt data-t="i_lang"></dt><dd data-t="i_lang_v"></dd></div>
+        <div><dt data-t="i_avail"></dt><dd data-t="i_avail_v"></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="keahlian">
+  <div class="wrap">
+    <div class="label" data-t="sk_label"></div><h2 style="margin-top:10px" data-t="sk_h"></h2>
+    <div class="skills" id="skills"></div>
+  </div>
+</section>
+
+<section class="alt" id="proyek">
+  <div class="wrap">
+    <div class="label" data-t="nav_proj"></div><h2 style="margin-top:10px" data-t="proj_h"></h2>
+    <div class="tabs" id="tabs"></div>
+    <div class="pgrid" id="pgrid"></div>
+  </div>
+</section>
+
+<section id="pengalaman">
+  <div class="wrap">
+    <div class="label" data-t="nav_exp"></div><h2 style="margin-top:10px" data-t="exp_h"></h2>
+    <div class="xp" id="xp"></div>
+    <div class="certs" id="sertifikat">
+      <h3 data-t="certs_h"></h3>
+      <table><thead><tr><th data-t="th_cert"></th><th class="hide" data-t="th_iss"></th><th data-t="th_year"></th><th></th></tr></thead><tbody id="certs"></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="cv">
+  <div class="wrap">
+    <div class="label" data-t="cv_label"></div><h2 style="margin-top:10px">Curriculum vitae</h2>
+    <div class="cvgrid">
+      <div>
+        <p class="muted" data-t="cv_p"></p>
+        <div class="seg"><button data-l="id">Indonesia</button><button data-l="en">English</button></div><br>
+        <button class="btn btn-solid" id="dl"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span data-t="dl_pdf"></span></button>
+        <p class="cvnote" id="cvnote" data-t="cv_note"></p>
+      </div>
+      <div class="sheet" id="sheet"></div>
+    </div>
+
+    <div class="contact" id="kontak">
+      <div>
+        <h3 data-t="nav_contact"></h3>
+        <p class="muted" style="margin:8px 0 24px" data-t="reply"></p>
+        <div class="clist">
+          <div><span class="k">Email</span>raka.pratama@email.com<button class="copy" data-c="raka.pratama@email.com" data-t="copy"></button></div>
+          <div><span class="k">LinkedIn</span><a href="https://www.linkedin.com" target="_blank" rel="noopener">linkedin.com/in/rakapratama</a></div>
+          <div><span class="k">GitHub</span><a href="https://github.com" target="_blank" rel="noopener">github.com/rakapratama</a></div>
+        </div>
+      </div>
+      <form id="form">
+        <label><span data-t="f_name"></span><input required></label>
+        <label>Email<input type="email" required></label>
+        <label><span data-t="f_msg"></span><textarea rows="5" required></textarea></label>
+        <div><button class="btn btn-solid" type="submit" data-t="f_send"></button></div>
+        <div class="sent" id="sent" data-t="f_sent"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="case"></div>
+</main>
+
+<div class="cm" id="certModal" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+  <div class="cm-box">
+    <div class="cm-head">
+      <div><h3 id="cmTitle"></h3><div class="muted" id="cmMeta" style="font-size:.88rem"></div></div>
+      <button class="copy" id="cmClose" data-t="close"></button>
+    </div>
+    <div class="cm-body" id="cmBody"></div>
+    <div class="cm-foot"><a id="cmLink" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span data-t="open_drive"></span></a></div>
+  </div>
+</div>
+
+<footer><div class="wrap"><span>© 2026 Raka Pratama</span><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></div></footer>
+
+<script>
+/* =====================================================================
+   DATA. Teks dua bahasa ditulis sebagai {id:"...", en:"..."}.
+   Teks yang sama di kedua bahasa cukup ditulis biasa.
+   ===================================================================== */
+const ROLES=["Data Analyst","Business Analyst","Supply Chain Analyst"];
+
+const T={
+ nav_about:{id:"Tentang",en:"About"},nav_proj:{id:"Proyek",en:"Projects"},nav_exp:{id:"Pengalaman",en:"Experience"},nav_contact:{id:"Kontak",en:"Contact"},
+ dl_cv:"Download CV",see_proj:{id:"Lihat Proyek",en:"View Projects"},certs_btn:{id:"Sertifikat",en:"Certificates"},
+ hero_label:{id:"Jakarta, Indonesia · Terbuka untuk peluang baru",en:"Jakarta, Indonesia · Open to new opportunities"},
+ iam:{id:"Saya seorang",en:"I am a"},
+ hero_lead:{id:"Analis dengan 3 tahun pengalaman di retail dan logistik. Saya membantu tim operasional mengambil keputusan berdasarkan data, dari forecasting permintaan hingga perbaikan proses bisnis.",en:"Analyst with 3 years of experience in retail and logistics. I help operations teams make data-driven decisions, from demand forecasting to business process improvement."},
+ f_years:{id:"tahun pengalaman",en:"years of experience"},f_proj:{id:"proyek",en:"projects"},f_cert:{id:"sertifikasi",en:"certifications"},f_hybrid:{id:"Siap hybrid",en:"Open to hybrid"},
+ photo:{id:"Foto profesional",en:"Professional photo"},
+ about_h:{id:"Latar belakang",en:"Background"},
+ about_p1:{id:"Saya lulusan Teknik Industri Universitas Indonesia. Karier saya dimulai di supply chain, lalu berkembang ke analisis data dan proses bisnis.",en:"I graduated in Industrial Engineering from Universitas Indonesia. My career started in supply chain and grew into data and business process analysis."},
+ about_p2:{id:"Saat ini saya bekerja sebagai Data Analyst di perusahaan retail nasional. Saya mencari peran Data Analyst, Business Analyst, atau Supply Chain Analyst di organisasi yang menjadikan data sebagai dasar keputusan.",en:"I currently work as a Data Analyst at a national retail company. I am looking for a Data Analyst, Business Analyst, or Supply Chain Analyst role in an organization that makes decisions based on data."},
+ i_edu:{id:"Pendidikan",en:"Education"},i_edu_v:{id:"S1 Teknik Industri, Universitas Indonesia",en:"B.Eng. Industrial Engineering, Universitas Indonesia"},
+ i_loc:{id:"Lokasi",en:"Location"},i_loc_v:{id:"Jakarta Selatan",en:"South Jakarta"},
+ i_lang:{id:"Bahasa",en:"Languages"},i_lang_v:{id:"Indonesia (native), English (profesional)",en:"Indonesian (native), English (professional)"},
+ i_avail:{id:"Ketersediaan",en:"Availability"},i_avail_v:{id:"Satu bulan pemberitahuan",en:"One month notice"},
+ sk_label:{id:"Keahlian",en:"Skills"},sk_h:{id:"Tools dan metode",en:"Tools and methods"},
+ adv:{id:"Mahir",en:"Advanced"},mid:{id:"Menengah",en:"Intermediate"},
+ proj_h:{id:"Studi kasus pilihan",en:"Selected case studies"},all:{id:"Semua",en:"All"},
+ see_case:{id:"Lihat studi kasus →",en:"View case study →"},
+ back:{id:"← Kembali ke proyek",en:"← Back to projects"},role:{id:"Peran",en:"Role"},dur:{id:"Durasi",en:"Duration"},
+ exec:{id:"Ringkasan Eksekutif",en:"Executive Summary"},ctx:{id:"Konteks dan masalah",en:"Context and problem"},data:"Data",
+ appr:{id:"Pendekatan",en:"Approach"},res:{id:"Hasil",en:"Results"},rec:{id:"Rekomendasi",en:"Recommendation"},
+ fig:{id:"Gambar 1. Tampilan dashboard utama proyek (ganti dengan screenshot asli).",en:"Figure 1. Main project dashboard (replace with a real screenshot)."},
+ report:{id:"Laporan PDF",en:"PDF Report"},prev:{id:"← Sebelumnya",en:"← Previous"},next:{id:"Berikutnya →",en:"Next →"},
+ exp_h:{id:"Riwayat kerja dan pendidikan",en:"Work history and education"},
+ certs_h:{id:"Sertifikasi",en:"Certifications"},th_cert:{id:"Sertifikat",en:"Certificate"},th_iss:{id:"Penerbit",en:"Issuer"},th_year:{id:"Tahun",en:"Year"},
+ view_cert:{id:"Lihat Sertifikat",en:"View Certificate"},close:{id:"Tutup",en:"Close"},open_drive:{id:"Buka di Google Drive",en:"Open in Google Drive"},
+ no_link:{id:"Link Google Drive untuk sertifikat ini belum diisi.",en:"The Google Drive link for this certificate has not been added yet."},
+ cv_label:{id:"CV & Kontak",en:"CV & Contact"},
+ cv_p:{id:"Ringkasan pengalaman dan keahlian dalam satu halaman. Tersedia dalam dua bahasa.",en:"A one-page summary of my experience and skills. Available in two languages."},
+ dl_pdf:"Download CV (PDF)",cv_note:{id:"Format PDF, 1 halaman.",en:"PDF format, 1 page."},
+ cv_demo:{id:"Pratinjau: setelah di-hosting, tombol ini mengunduh file PDF dari folder /cv/.",en:"Preview: once hosted, this button downloads the PDF from the /cv/ folder."},
+ reply:{id:"Saya biasanya membalas dalam satu hari kerja.",en:"I usually reply within one business day."},
+ copy:{id:"Salin",en:"Copy"},copied:{id:"Tersalin",en:"Copied"},
+ f_name:{id:"Nama",en:"Name"},f_msg:{id:"Pesan",en:"Message"},f_send:{id:"Kirim Pesan",en:"Send Message"},
+ f_sent:{id:"Ini versi pratinjau, pesan belum terkirim. Setelah website di-hosting, form ini disambungkan ke Formspree.",en:"This is a preview, the message was not sent. Once the site is hosted, this form will be connected to Formspree."},
+ cv_sum:{id:"Ringkasan",en:"Summary"},cv_exp:{id:"Pengalaman",en:"Experience"},cv_edu:{id:"Pendidikan",en:"Education"},cv_sk:{id:"Keahlian",en:"Skills"},
+ cv_text:{id:"Analis dengan 3 tahun pengalaman di retail dan logistik, terbiasa mengubah data menjadi rekomendasi bisnis yang terukur.",en:"Analyst with 3 years of experience in retail and logistics, turning data into measurable business recommendations."}
+};
+
+const SKILLS=[
+ [{id:"Data & Analitik",en:"Data & Analytics"},[["SQL","adv"],["Excel / Power Query","adv"],["Python (Pandas)","mid"],[{id:"Statistik",en:"Statistics"},"mid"]]],
+ ["Visualisasi & BI",[["Power BI / DAX","adv"],["Tableau","mid"],["Looker Studio","mid"]]],
+ ["Business Analysis",[["Requirement Gathering","adv"],["BPMN","adv"],["User Story & BRD","adv"],["Jira","mid"]]],
+ ["Supply Chain",[["Demand Forecasting","adv"],["Inventory Planning","adv"],["SAP MM","mid"],["Procurement","mid"]]]
+];
+SKILLS[1][0]={id:"Visualisasi & BI",en:"Visualization & BI"};
+
+const CATS=["Data Analysis","Business Analysis","Supply Chain"];
+
+const P=[
+ {id:"penjualan-retail",cat:"Data Analysis",ch:"bar",n:"+12%",tools:["SQL","Power BI","Excel"],role:"Data Analyst",
+  t:{id:"Analisis Penjualan Retail Nasional",en:"National Retail Sales Analysis"},
+  s:{id:"Menemukan pendorong penurunan penjualan dari 1,2 juta transaksi di 85 toko.",en:"Finding the drivers of declining sales across 1.2 million transactions in 85 stores."},
+  nl:{id:"Penjualan kategori fokus",en:"Focus category sales"},dur:{id:"6 minggu",en:"6 weeks"},
+  ex:{id:["Penjualan kategori fokus naik 12% dalam satu kuartal","20% produk menyumbang 78% omzet","Laporan mingguan otomatis, hemat 5 jam per minggu"],en:["Focus category sales up 12% in one quarter","20% of products drive 78% of revenue","Automated weekly reporting, saving 5 hours per week"]},
+  ctx:{id:"Penjualan stagnan selama tiga kuartal. Manajemen belum tahu kategori dan wilayah mana yang paling berkontribusi terhadap penurunan.",en:"Sales had been flat for three quarters. Management did not know which categories and regions contributed most to the decline."},
+  data:{id:"1,2 juta baris transaksi POS periode 2023 sampai 2025 dari 85 toko dan 14 kategori produk. Data telah disamarkan.",en:"1.2 million POS transaction rows from 2023 to 2025 across 85 stores and 14 product categories. Data has been anonymized."},
+  steps:{id:["Membersihkan duplikat dan transaksi retur dengan SQL","Membangun model data star schema di Power BI","Menganalisis tren, musiman, dan kontribusi Pareto per kategori","Menyajikan dashboard interaktif untuk manajer regional"],en:["Cleaned duplicates and returns using SQL","Built a star schema data model in Power BI","Analyzed trends, seasonality, and Pareto contribution by category","Delivered an interactive dashboard for regional managers"]},
+  res:[["+12%",{id:"Penjualan kategori fokus",en:"Focus category sales"}],["78%",{id:"Omzet dari 20% produk",en:"Revenue from 20% of products"}],[{id:"5 jam",en:"5 hrs"},{id:"Dihemat per minggu",en:"Saved per week"}]],
+  rec:{id:"Fokuskan promosi pada tiga kategori bermargin tertinggi di Jawa Barat dan kurangi stok SKU lambat laku di 12 toko.",en:"Focus promotions on the three highest-margin categories in West Java and reduce slow-moving SKU stock in 12 stores."}},
+ {id:"segmentasi-rfm",cat:"Data Analysis",ch:"scatter",n:"3.1x",tools:["Python","Pandas","K-Means"],role:"Data Analyst",
+  t:{id:"Segmentasi Pelanggan dengan RFM",en:"Customer Segmentation with RFM"},
+  s:{id:"Mengelompokkan 40 ribu pelanggan e-commerce untuk kampanye yang lebih tepat sasaran.",en:"Grouping 40,000 e-commerce customers for better-targeted campaigns."},
+  nl:{id:"ROI kampanye email",en:"Email campaign ROI"},dur:{id:"4 minggu",en:"4 weeks"},
+  ex:{id:["ROI kampanye email naik menjadi 3,1 kali","Lima segmen pelanggan dengan strategi berbeda","Segmen berisiko teridentifikasi, mewakili 22% pendapatan"],en:["Email campaign ROI rose to 3.1x","Five customer segments with distinct strategies","At-risk segment identified, representing 22% of revenue"]},
+  ctx:{id:"Tim marketing mengirim promo yang sama ke seluruh pelanggan. Conversion rate rendah dan biaya kampanye terus naik.",en:"The marketing team sent the same promotion to every customer. Conversion was low and campaign costs kept rising."},
+  data:{id:"40.000 pelanggan dan 210.000 transaksi selama dua tahun. Dataset publik e-commerce yang disesuaikan.",en:"40,000 customers and 210,000 transactions over two years. An adapted public e-commerce dataset."},
+  steps:{id:["Menghitung skor Recency, Frequency, dan Monetary","Normalisasi data dan menentukan jumlah cluster dengan Elbow Method","Clustering K-Means menjadi lima segmen","Menyusun profil dan rekomendasi untuk tiap segmen"],en:["Calculated Recency, Frequency, and Monetary scores","Normalized data and chose cluster count with the Elbow Method","Clustered customers into five segments with K-Means","Built profiles and recommendations for each segment"]},
+  res:[["3.1x",{id:"ROI kampanye",en:"Campaign ROI"}],["5",{id:"Segmen pelanggan",en:"Customer segments"}],["22%",{id:"Pendapatan berisiko",en:"Revenue at risk"}]],
+  rec:{id:"Jalankan program loyalitas untuk segmen Champions dan kampanye win-back untuk segmen At Risk.",en:"Run a loyalty program for Champions and a win-back campaign for the At Risk segment."}},
+ {id:"order-to-cash",cat:"Business Analysis",ch:"flow",n:"-35%",tools:["BPMN","Visio","Excel"],role:"Business Analyst",
+  t:{id:"Perbaikan Proses Order-to-Cash",en:"Order-to-Cash Process Improvement"},
+  s:{id:"Memetakan ulang alur pesanan hingga pembayaran untuk mempercepat arus kas.",en:"Redesigning the order-to-payment flow to speed up cash flow."},
+  nl:{id:"Waktu siklus O2C",en:"O2C cycle time"},dur:{id:"8 minggu",en:"8 weeks"},
+  ex:{id:["Waktu siklus turun 35%, dari 21 menjadi 14 hari","Empat langkah manual dihapus","Kas diterima tujuh hari lebih cepat"],en:["Cycle time down 35%, from 21 to 14 days","Four manual steps removed","Cash received seven days sooner"]},
+  ctx:{id:"Rata-rata waktu dari pesanan masuk hingga pembayaran diterima mencapai 21 hari dan menekan arus kas perusahaan.",en:"The average time from order to payment was 21 days, putting pressure on the company's cash flow."},
+  data:{id:"Log ERP enam bulan dan wawancara dengan 12 stakeholder dari sales, gudang, dan finance.",en:"Six months of ERP logs and interviews with 12 stakeholders from sales, warehouse, and finance."},
+  steps:{id:["Wawancara dan workshop lintas divisi","Memetakan proses AS-IS dengan BPMN","Mengidentifikasi bottleneck pada approval manual dan invoice ganda","Merancang proses TO-BE beserta rencana implementasi"],en:["Cross-functional interviews and workshops","Mapped the AS-IS process in BPMN","Identified bottlenecks in manual approvals and duplicate invoices","Designed the TO-BE process and implementation plan"]},
+  res:[["-35%",{id:"Waktu siklus",en:"Cycle time"}],[{id:"7 hari",en:"7 days"},{id:"Kas lebih cepat",en:"Faster cash"}],["4",{id:"Langkah manual dihapus",en:"Manual steps removed"}]],
+  rec:{id:"Otomatisasi approval untuk pesanan di bawah Rp50 juta dan buat invoice langsung dari konfirmasi pengiriman.",en:"Automate approvals for orders under IDR 50 million and generate invoices directly from shipping confirmation."}},
+ {id:"brd-inventory",cat:"Business Analysis",ch:"doc",n:"42",tools:["BRD","Jira","Figma"],role:"Business Analyst",
+  t:{id:"Kebutuhan Bisnis Sistem Inventory",en:"Inventory System Business Requirements"},
+  s:{id:"Menyusun BRD dan user story untuk sistem inventory terpusat di empat gudang.",en:"Writing the BRD and user stories for a centralized inventory system across four warehouses."},
+  nl:{id:"User story disetujui",en:"Approved user stories"},dur:{id:"5 minggu",en:"5 weeks"},
+  ex:{id:["42 user story dengan acceptance criteria","Sign-off dari seluruh stakeholder","Rencana implementasi bertahap di empat gudang"],en:["42 user stories with acceptance criteria","Sign-off from all stakeholders","Phased rollout plan across four warehouses"]},
+  ctx:{id:"Pencatatan stok masih memakai spreadsheet terpisah per gudang sehingga data tidak sinkron dan sering terjadi selisih.",en:"Stock was tracked in separate spreadsheets per warehouse, so data was out of sync and discrepancies were frequent."},
+  data:{id:"SOP gudang, sampel spreadsheet stok, dan observasi lapangan di empat gudang.",en:"Warehouse SOPs, sample stock spreadsheets, and on-site observation at four warehouses."},
+  steps:{id:["Wawancara dan observasi proses gudang","Menyusun BRD lengkap dengan scope dan asumsi","Menulis user story dan acceptance criteria","Validasi wireframe bersama pengguna"],en:["Interviewed staff and observed warehouse processes","Wrote a full BRD with scope and assumptions","Wrote user stories and acceptance criteria","Validated wireframes with users"]},
+  res:[["42","User story"],["4",{id:"Gudang",en:"Warehouses"}],["100%","Sign-off"]],
+  rec:{id:"Mulai implementasi dari gudang pusat dengan barcode scanning sebagai fitur prioritas.",en:"Start the rollout at the central warehouse with barcode scanning as the priority feature."}},
+ {id:"demand-forecasting",cat:"Supply Chain",ch:"line",n:"-31%",tools:["Python","Prophet","Power BI"],role:"Supply Chain Analyst",
+  t:{id:"Demand Forecasting Produk FMCG",en:"FMCG Demand Forecasting"},
+  s:{id:"Model peramalan permintaan mingguan untuk 120 SKU agar stok lebih akurat.",en:"A weekly demand forecasting model for 120 SKUs to make stock levels more accurate."},
+  nl:{id:"Kejadian stockout",en:"Stockout incidents"},dur:{id:"7 minggu",en:"7 weeks"},
+  ex:{id:["Stockout turun 31% dalam enam bulan","Akurasi forecast naik 23%","MAPE akhir 11,4%"],en:["Stockouts down 31% in six months","Forecast accuracy up 23%","Final MAPE of 11.4%"]},
+  ctx:{id:"Forecast manual berbasis rata-rata sederhana menyebabkan stockout di musim ramai dan overstock di musim sepi.",en:"Manual forecasts based on simple averages caused stockouts in peak season and overstock in low season."},
+  data:{id:"Penjualan mingguan tiga tahun untuk 120 SKU, kalender promo, dan hari libur nasional.",en:"Three years of weekly sales for 120 SKUs, a promotion calendar, and national holidays."},
+  steps:{id:["Eksplorasi tren dan pola musiman per SKU","Membandingkan Moving Average, ARIMA, dan Prophet","Evaluasi MAPE pada data uji enam bulan","Menyajikan forecast di dashboard tim planning"],en:["Explored trend and seasonality per SKU","Compared Moving Average, ARIMA, and Prophet","Evaluated MAPE on a six-month test set","Delivered forecasts in the planning team's dashboard"]},
+  res:[["-31%","Stockout"],["+23%",{id:"Akurasi forecast",en:"Forecast accuracy"}],[{id:"11,4%",en:"11.4%"},"MAPE"]],
+  rec:{id:"Gunakan Prophet untuk SKU dengan pola musiman kuat dan tinjau forecast bersama tim sales setiap bulan.",en:"Use Prophet for strongly seasonal SKUs and review forecasts with the sales team monthly."}},
+ {id:"rute-distribusi",cat:"Supply Chain",ch:"route",n:{id:"Rp1,2 M",en:"IDR 1.2B"},tools:["Excel Solver","Power BI"],role:"Supply Chain Analyst",
+  t:{id:"Optimasi Rute dan Biaya Distribusi",en:"Distribution Route and Cost Optimization"},
+  s:{id:"Mengoptimalkan rute dari dua gudang ke 60 distributor di Jawa.",en:"Optimizing routes from two warehouses to 60 distributors in Java."},
+  nl:{id:"Penghematan per tahun",en:"Annual savings"},dur:{id:"5 minggu",en:"5 weeks"},
+  ex:{id:["Penghematan biaya logistik Rp1,2 miliar per tahun","Utilisasi truk naik 19%","Jarak tempuh turun 14%"],en:["Logistics savings of IDR 1.2 billion per year","Truck utilization up 19%","Distance traveled down 14%"]},
+  ctx:{id:"Biaya logistik naik 18% dalam setahun karena rute tidak efisien dan kapasitas truk tidak terisi penuh.",en:"Logistics costs rose 18% in a year due to inefficient routes and underused truck capacity."},
+  data:{id:"Data pengiriman 12 bulan, lokasi 60 distributor, serta tarif dan kapasitas armada.",en:"12 months of shipment data, 60 distributor locations, and fleet rates and capacity."},
+  steps:{id:["Menghitung biaya per rute dan utilisasi truk","Membangun model optimasi dengan Excel Solver","Simulasi skenario konsolidasi pengiriman","Dashboard pemantauan biaya bulanan"],en:["Calculated cost per route and truck utilization","Built an optimization model in Excel Solver","Simulated shipment consolidation scenarios","Built a monthly cost monitoring dashboard"]},
+  res:[[{id:"Rp1,2 M",en:"IDR 1.2B"},{id:"Hemat per tahun",en:"Saved per year"}],["+19%",{id:"Utilisasi truk",en:"Truck utilization"}],["-14%",{id:"Jarak tempuh",en:"Distance traveled"}]],
+  rec:{id:"Konsolidasikan pengiriman wilayah timur menjadi tiga kali seminggu dengan armada berkapasitas lebih besar.",en:"Consolidate eastern region shipments to three times a week using larger-capacity trucks."}}
+];
+
+const XP=[
+ [{id:"2024 sampai sekarang",en:"2024 to present"},"Data Analyst","PT Nusantara Retailindo, Jakarta",{id:["Membangun 12 dashboard Power BI untuk 80+ pengguna","Mengotomatisasi laporan mingguan, hemat 5 jam kerja per minggu","Analisis promo yang menaikkan margin kategori 4%"],en:["Built 12 Power BI dashboards for 80+ users","Automated weekly reports, saving 5 work hours per week","Promotion analysis that raised category margin by 4%"]}],
+ [{id:"2023 sampai 2024",en:"2023 to 2024"},"Supply Chain Analyst","PT Logistik Maju Bersama, Bekasi",{id:["Menurunkan stockout 31% dengan model forecasting","Mengelola analisis inventory untuk 1.500+ SKU"],en:["Reduced stockouts by 31% with a forecasting model","Managed inventory analysis for 1,500+ SKUs"]}],
+ [{id:"2022, 6 bulan",en:"2022, 6 months"},"Business Analyst Intern","PT Fintech Digital, Jakarta",{id:["Menulis 30+ user story dan memfasilitasi sprint review","Memetakan proses onboarding nasabah dengan BPMN"],en:["Wrote 30+ user stories and facilitated sprint reviews","Mapped the customer onboarding process in BPMN"]}],
+ [{id:"2018 sampai 2022",en:"2018 to 2022"},{id:"S1 Teknik Industri",en:"B.Eng. Industrial Engineering"},{id:"Universitas Indonesia, IPK 3,65",en:"Universitas Indonesia, GPA 3.65"},{id:["Skripsi: optimasi persediaan dengan EOQ dan simulasi Monte Carlo"],en:["Thesis: inventory optimization with EOQ and Monte Carlo simulation"]}]
+];
+
+/* Sertifikat: [nama, penerbit, tahun, link Google Drive]
+   Cara isi link: upload file ke Google Drive > klik kanan > Bagikan > ubah akses jadi
+   "Siapa saja yang memiliki link" > Salin link, lalu tempel di posisi keempat. */
+const CERTS=[
+ ["Google Data Analytics Professional Certificate","Google","2024",""],
+ ["Microsoft Certified: Power BI Data Analyst (PL-300)","Microsoft","2024",""],
+ ["Certified Supply Chain Professional (CSCP)","ASCM","2025",""],
+ ["Entry Certificate in Business Analysis (ECBA)","IIBA","2023",""],
+ ["Lean Six Sigma Yellow Belt","Six Sigma Council","2022",""]
+];
+/* ===================================================================== */
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let LANG="id",cvLang="id";
+const L=x=>x&&typeof x==="object"&&!Array.isArray(x)?(x[LANG]??x.id):x;
+const tr=k=>L(T[k]);
+const ext='<svg class="ico" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+
+/* bahasa: otomatis dari browser, bisa diganti manual, pilihan diingat */
+function detectLang(){
+ try{const s=localStorage.getItem("lang");if(s==="id"||s==="en")return s}catch(e){}
+ const langs=navigator.languages||[navigator.language||"id"];
+ return langs.some(l=>/^(id|ms)/i.test(l))?"id":"en";
+}
+
+/* typing */
+(function(){const el=$("#typed");if(matchMedia("(prefers-reduced-motion: reduce)").matches){el.textContent=ROLES[0];return}
+let r=0,i=0,d=false;(function t(){const w=ROLES[r];el.textContent=w.slice(0,i);
+if(!d&&i<w.length){i++;return setTimeout(t,90)}
+if(!d){d=true;return setTimeout(t,2000)}
+if(i>0){i--;return setTimeout(t,45)}
+d=false;r=(r+1)%ROLES.length;setTimeout(t,400)})()})();
+
+$("#toggle").onclick=()=>$("#menu").classList.toggle("open");
+$$("[data-home]").forEach(a=>a.addEventListener("click",()=>$("#menu").classList.remove("open")));
+
+function thumb(type){
+ const N="#0B2545",Lc="#C9D2DE",B="#7C93B3",W=320,H=200;
+ let s=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice"><rect width="${W}" height="${H}" fill="#F3F5F8"/><rect x="16" y="14" width="${W-32}" height="${H-28}" rx="3" fill="#fff" stroke="#E5E8EC"/><rect x="28" y="26" width="70" height="7" rx="2" fill="${N}" opacity=".85"/><rect x="28" y="38" width="44" height="5" rx="2" fill="${Lc}"/>`;
+ const bx=28,by=56,bw=W-56,bh=H-84;
+ for(let k=0;k<4;k++)s+=`<line x1="${bx}" x2="${bx+bw}" y1="${by+k*bh/3}" y2="${by+k*bh/3}" stroke="#EEF1F4"/>`;
+ if(type==="bar"){[40,58,50,72,64,86,78,96].forEach((v,i)=>{const h=v/100*bh;s+=`<rect x="${bx+8+i*31}" y="${by+bh-h}" width="18" height="${h}" fill="${i==7?N:B}"/>`})}
+ if(type==="line"){const a=[70,62,66,50,56,40,46,32,38,24],f=[68,64,58,54,48,44,38,34,30,26];const p=x=>x.map((v,i)=>`${bx+i*bw/9},${by+v/100*bh}`).join(" ");s+=`<polyline points="${p(a)}" fill="none" stroke="${N}" stroke-width="2"/><polyline points="${p(f)}" fill="none" stroke="${B}" stroke-width="1.5" stroke-dasharray="4 3"/>`}
+ if(type==="scatter"){let z=3;const r=()=>(z=(z*9301+49297)%233280)/233280;[[80,90,N],[160,70,B],[230,110,"#A9B8CC"],[120,130,B],[250,75,N]].forEach(([x,y,c])=>{for(let k=0;k<10;k++)s+=`<circle cx="${x+(r()-.5)*50}" cy="${y+(r()-.5)*30}" r="3" fill="${c}"/>`})}
+ if(type==="flow"){["Order","Approval","Picking","Ship","Invoice"].forEach((t,i)=>{const x=bx+i*54,y=by+bh/2-14;s+=`<rect x="${x}" y="${y}" width="44" height="28" rx="2" fill="#fff" stroke="${i==1||i==4?N:Lc}" stroke-width="${i==1||i==4?1.6:1}"/><text x="${x+22}" y="${y+17}" font-size="7" text-anchor="middle" fill="#5F6B7A" font-family="Inter">${t}</text>`;if(i<4)s+=`<line x1="${x+44}" x2="${x+54}" y1="${y+14}" y2="${y+14}" stroke="${B}"/>`})}
+ if(type==="doc"){for(let c=0;c<3;c++){const x=bx+c*90;s+=`<rect x="${x}" y="${by}" width="80" height="${bh}" fill="#F7F8FA" stroke="#E5E8EC"/><rect x="${x+8}" y="${by+8}" width="36" height="5" fill="${c?B:N}"/>`;for(let k=0;k<3-c;k++)s+=`<rect x="${x+8}" y="${by+22+k*22}" width="64" height="16" fill="#fff" stroke="#E5E8EC"/>`}}
+ if(type==="route"){const hub=[160,by+bh/2];[[60,80],[100,140],[220,72],[260,130],[190,148],[80,110]].forEach(([x,y])=>s+=`<line x1="${hub[0]}" y1="${hub[1]}" x2="${x}" y2="${y}" stroke="${Lc}" stroke-dasharray="3 3"/><circle cx="${x}" cy="${y}" r="4" fill="${B}"/>`);s+=`<rect x="${hub[0]-6}" y="${hub[1]-6}" width="12" height="12" fill="${N}"/>`}
+ return s+"</svg>";
+}
+
+let cat="all";
+function renderTabs(){$("#tabs").innerHTML=[["all",tr("all")],...CATS.map(c=>[c,c])].map(([k,v])=>`<button data-c="${k}" class="${k==cat?"on":""}">${v}</button>`).join("")}
+$("#tabs").onclick=e=>{const c=e.target.dataset.c;if(!c)return;cat=c;renderTabs();grid()};
+function grid(){$("#pgrid").innerHTML=P.filter(p=>cat=="all"||p.cat==cat).map(p=>`<a class="card" href="#${p.id}"><div class="thumb">${thumb(p.ch)}<div class="ov"><span class="num">${L(p.n)}</span><small>${L(p.nl)}</small><em>${tr("see_case")}</em></div></div><div class="cbody"><div class="label">${p.cat}</div><h3>${L(p.t)}</h3><p>${L(p.s)}</p><div class="mres"><b class="num">${L(p.n)}</b> ${L(p.nl).toLowerCase()}</div><div class="ctags">${p.tools.slice(0,3).join(" · ")}</div></div></a>`).join("")}
+
+function caseHTML(i){const p=P[i],pr=P[(i-1+P.length)%P.length],nx=P[(i+1)%P.length];
+return `<article class="cs"><a href="#proyek" class="back">${tr("back")}</a>
+<div class="label">${p.cat}</div><h1>${L(p.t)}</h1>
+<div class="meta"><span>${tr("role")} <b>${p.role}</b></span><span>${tr("dur")} <b>${L(p.dur)}</b></span><span>Tools <b>${p.tools.join(", ")}</b></span></div>
+<div class="exec"><h3>${tr("exec")}</h3><ul>${L(p.ex).map(x=>`<li>${x}</li>`).join("")}</ul></div>
+<h2>${tr("ctx")}</h2><p>${L(p.ctx)}</p>
+<h2>${tr("data")}</h2><p>${L(p.data)}</p>
+<h2>${tr("appr")}</h2><ol>${L(p.steps).map(x=>`<li>${x}</li>`).join("")}</ol>
+<div class="fig">${thumb(p.ch)}</div><p class="cap">${tr("fig")}</p>
+<h2>${tr("res")}</h2><div class="res">${p.res.map(([a,b])=>`<div><span class="num">${L(a)}</span><small>${L(b)}</small></div>`).join("")}</div>
+<h2>${tr("rec")}</h2><p>${L(p.rec)}</p>
+<div class="links"><a href="https://github.com" target="_blank" rel="noopener">${ext}GitHub</a><a href="https://public.tableau.com" target="_blank" rel="noopener">${ext}Dashboard</a><a href="https://drive.google.com" target="_blank" rel="noopener">${ext}${tr("report")}</a></div>
+<div class="pn"><a href="#${pr.id}"><small>${tr("prev")}</small>${L(pr.t)}</a><a href="#${nx.id}" style="text-align:right"><small>${tr("next")}</small>${L(nx.t)}</a></div></article>`}
+function route(scroll){const h=location.hash.slice(1),i=P.findIndex(p=>p.id===h);
+ if(i>=0){$("#case").innerHTML=caseHTML(i);document.body.classList.add("case-open");if(scroll!==false)scrollTo(0,0)}
+ else if(document.body.classList.contains("case-open")){document.body.classList.remove("case-open");const t=document.getElementById(h);if(t)setTimeout(()=>t.scrollIntoView(),0)}}
+window.addEventListener("hashchange",()=>route());
+
+function renderStatic(){
+ $("#skills").innerHTML=SKILLS.map(([h,l])=>`<div><h3>${L(h)}</h3><ul>${l.map(([a,b])=>`<li>${L(a)}<span>${tr(b)}</span></li>`).join("")}</ul></div>`).join("");
+ $("#xp").innerHTML=XP.map(([w,t,o,l])=>`<article><time>${L(w)}</time><div><h3>${L(t)}</h3><div class="org">${L(o)}</div><ul>${L(l).map(x=>`<li>${x}</li>`).join("")}</ul></div></article>`).join("");
+ $("#certs").innerHTML=CERTS.map(([n,o,y],i)=>`<tr><td>${n}</td><td class="hide muted">${o}</td><td class="num" style="font-weight:500">${y}</td><td style="text-align:right;white-space:nowrap"><a href="#sertifikat" data-cert="${i}">${tr("view_cert")}</a></td></tr>`).join("");
+}
+
+function cv(){const keep=LANG;LANG=cvLang;
+ $("#sheet").innerHTML=`<h4>Raka Pratama</h4><div class="r">Data Analyst · Business Analyst · Supply Chain</div><div class="c">Jakarta · raka.pratama@email.com · linkedin.com/in/rakapratama</div>
+<h5>${tr("cv_sum")}</h5><p>${tr("cv_text")}</p><h5>${tr("cv_exp")}</h5>${XP.slice(0,3).map(([w,t,o,li])=>`<div class="row">${L(t)}, ${L(o).split(",")[0]}<span>${L(w)}</span></div><ul>${L(li).map(x=>`<li>${x}</li>`).join("")}</ul>`).join("")}
+<h5>${tr("cv_edu")}</h5><div class="row">${L(XP[3][1])}, ${L(XP[3][2])}<span>${L(XP[3][0])}</span></div><h5>${tr("cv_sk")}</h5><p>${SKILLS.flatMap(s=>s[1].map(x=>L(x[0]))).join(", ")}</p>`;
+ LANG=keep;$$(".seg button").forEach(b=>b.classList.toggle("on",b.dataset.l===cvLang))}
+$$(".seg button").forEach(b=>b.onclick=()=>{cvLang=b.dataset.l;cv()});
+
+function setLang(l,save){
+ LANG=l;cvLang=l;document.documentElement.lang=l;
+ if(save){try{localStorage.setItem("lang",l)}catch(e){}}
+ $$("[data-t]").forEach(el=>{el.textContent=tr(el.dataset.t)});
+ $$(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===l));
+ document.title=l==="id"?"Raka Pratama | Data & Business Analyst":"Raka Pratama | Data & Business Analyst Portfolio";
+ renderTabs();grid();renderStatic();cv();
+ if(document.body.classList.contains("case-open"))route(false);
+ if($("#certModal").classList.contains("open")&&openCert._i!=null)openCert(openCert._i);
+}
+$$(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang,true));
+
+/* certificate modal */
+function drivePreview(u){const m=u.match(/\/d\/([\w-]+)/)||u.match(/[?&]id=([\w-]+)/);return m?`https://drive.google.com/file/d/${m[1]}/preview`:""}
+function openCert(i){openCert._i=i;const [n,o,y,u]=CERTS[i],pv=drivePreview(u||"");
+ $("#cmTitle").textContent=n;$("#cmMeta").textContent=`${o} · ${y}`;
+ $("#cmBody").innerHTML=pv?`<iframe src="${pv}" title="${n}" allow="autoplay"></iframe>`:`<div class="cm-empty">${tr("no_link")}</div>`;
+ $("#cmLink").style.display=u?"inline-flex":"none";$("#cmLink").href=u||"#";
+ $("#certModal").classList.add("open");document.body.style.overflow="hidden"}
+function closeCert(){openCert._i=null;$("#certModal").classList.remove("open");$("#cmBody").innerHTML="";document.body.style.overflow=""}
+$("#certs").onclick=e=>{const a=e.target.closest("[data-cert]");if(a){e.preventDefault();openCert(+a.dataset.cert)}};
+$("#cmClose").onclick=closeCert;
+$("#certModal").onclick=e=>{if(e.target.id==="certModal")closeCert()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCert()});
+
+$("#dl").onclick=()=>{$("#cvnote").textContent=tr("cv_demo")};
+$$(".copy[data-c]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.c);b.textContent=tr("copied")}catch(e){}setTimeout(()=>b.textContent=tr("copy"),1800)});
+$("#form").onsubmit=e=>{e.preventDefault();$("#sent").style.display="block";e.target.reset()};
+
+setLang(detectLang(),false);
+route();
+</script>
+</body>
+</html>

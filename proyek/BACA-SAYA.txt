@@ -1,0 +1,7 @@
+Simpan gambar proyek di sini dengan nama sesuai id proyek, format .jpg:
+  penjualan-retail.jpg
+  segmentasi-rfm.jpg
+  order-to-cash.jpg
+  brd-inventory.jpg
+  demand-forecasting.jpg
+  rute-distribusi.jpg

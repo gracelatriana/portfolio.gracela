@@ -1,0 +1,2 @@
+Simpan file sertifikat di sini (pdf/jpg/png),
+lalu tulis namanya di CERTS dalam index-v2.html, contoh: "sertifikat/google.pdf"

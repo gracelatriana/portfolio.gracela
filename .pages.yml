@@ -1,0 +1,23 @@
+# Konfigurasi Pages CMS (https://app.pagescms.org)
+# Dipakai untuk upload file lewat browser.
+media:
+  - name: foto
+    label: Foto Profil (nama file harus foto.jpg)
+    input: foto
+    output: foto
+    extensions: [jpg, jpeg]
+  - name: cv
+    label: CV (CV-ID.pdf dan CV-EN.pdf)
+    input: cv
+    output: cv
+    extensions: [pdf]
+  - name: sertifikat
+    label: Sertifikat
+    input: sertifikat
+    output: sertifikat
+    extensions: [pdf, jpg, jpeg, png]
+  - name: proyek
+    label: Gambar Proyek (nama = id proyek, .jpg)
+    input: proyek
+    output: proyek
+    extensions: [jpg, jpeg]
