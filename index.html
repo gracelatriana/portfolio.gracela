@@ -188,6 +188,43 @@ body.case-open #case{display:block}
 .res .num{display:block;font-size:2.2rem;color:var(--acc);line-height:1.2}
 .res small{color:var(--muted);font-size:.88rem}
 @media(max-width:560px){.res{grid-template-columns:1fr}}
+/* halaman detail proyek: header maroon + dua kolom */
+.cs2{padding-bottom:80px}
+.chead{background:var(--text);color:var(--bg);padding:118px 0 30px}
+.chead .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.chead h1{font-size:clamp(2rem,4vw,3rem);line-height:1.05;color:var(--bg)}
+.cpills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cpills span{border:1px solid rgba(249,246,241,.45);border-radius:999px;padding:4px 14px;font-size:.88rem}
+.cback{border:1.5px solid var(--bg);border-radius:999px;padding:11px 24px;color:var(--bg);font-weight:500;white-space:nowrap}
+.cback:hover{background:var(--bg);color:var(--text)}
+.cgrid{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;padding-top:56px}
+.ch{font-family:Inter,sans-serif;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin:34px 0 12px;color:var(--text)}
+.cgrid>div>.ch:first-child{margin-top:0}
+.cgrid p{color:var(--text);opacity:.85}
+.cgrid .lead{font-size:1.08rem;opacity:1}
+.clist{list-style:none}.clist li{padding:4px 0 4px 16px;position:relative;color:var(--text)}
+.clist li::before{content:"•";position:absolute;left:0}
+.ctags2{display:flex;flex-wrap:wrap;gap:8px}
+.ctags2 span{border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:.92rem;background:var(--card)}
+.cbtns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.cbtns a{border:1.5px solid var(--text);border-radius:999px;padding:11px 22px;font-weight:500}
+.cbtns a:hover{background:var(--text);color:var(--bg)}
+.csteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.csteps div{background:#F3ECE3;border:1px solid var(--line);border-radius:14px;padding:16px}
+.csteps .num{font-family:"Instrument Serif",Georgia,serif;font-size:2rem;opacity:.6;line-height:1}
+.csteps p{font-size:.86rem;margin-top:10px;opacity:1}
+.cres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cres div{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card)}
+.cres .num{display:block;font-size:1.6rem;line-height:1.15}
+.cres small{color:var(--muted);font-size:.84rem}
+.cprev{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cprev a{display:block;background:#F3ECE3;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center;color:var(--text)}
+.cprev a>div{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--card)}
+.cprev img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.cprev svg{width:100%;height:100%;display:block}
+.cprev span{display:block;margin-top:10px;font-size:.92rem}
+.cprev a:hover{border-color:var(--acc2)}
+@media(max-width:900px){.cgrid{grid-template-columns:1fr;gap:20px}.cres,.cprev{grid-template-columns:1fr 1fr}}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
 .links a{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 16px;color:var(--text);font-size:.9rem}
 .links a:hover{border-color:var(--acc)}
@@ -457,10 +494,10 @@ const T={
  adv:{id:"Mahir",en:"Advanced"},mid:{id:"Menengah",en:"Intermediate"},
  proj_h:{id:"Studi kasus pilihan",en:"Selected case studies"},all:{id:"Semua",en:"All"},
  see_case:{id:"Lihat studi kasus →",en:"View case study →"},details:{id:"Lihat Detail Proyek",en:"View Project Details"},
- back:{id:"← Kembali ke proyek",en:"← Back to projects"},role:{id:"Peran",en:"Role"},dur:{id:"Durasi",en:"Duration"},
- exec:{id:"Ringkasan Eksekutif",en:"Executive Summary"},ctx:{id:"Konteks dan masalah",en:"Context and problem"},data:"Data",
+ back:{id:"← Kembali ke proyek",en:"← Back to projects"},back_p:{id:"Kembali ke Proyek",en:"Back to Projects"},contrib:{id:"Kontribusi Saya",en:"My Contributions"},deliv:{id:"Tools & Metode",en:"Tools & Methods"},preview:{id:"Pratinjau Proyek",en:"Project Previews"},role:{id:"Peran",en:"Role"},dur:{id:"Durasi",en:"Duration"},
+ exec:{id:"Ringkasan Eksekutif",en:"Executive Summary"},ctx:{id:"Gambaran Umum",en:"Overview"},data:"Data",
  appr:{id:"Pendekatan",en:"Approach"},res:{id:"Hasil",en:"Results"},rec:{id:"Rekomendasi",en:"Recommendation"},
- fig:{id:"Gambar 1. Tampilan dashboard utama proyek (ganti dengan screenshot asli).",en:"Figure 1. Main project dashboard (replace with a real screenshot)."},
+ fig:{id:"Pratinjau segera hadir",en:"Preview coming soon"},
  report:{id:"Laporan PDF",en:"PDF Report"},prev:{id:"← Sebelumnya",en:"← Previous"},next:{id:"Berikutnya →",en:"Next →"},
  exp_h:{id:"Riwayat kerja dan pendidikan",en:"Work history and education"},
  exp_title:{id:"Pengalaman Profesional",en:"Professional Experience"},exp_sub:{id:"Magang 12 bulan di Kalbe Farma dan pengalaman kerja paruh waktu.",en:"A 12-month internship at Kalbe Farma and part-time work."},
@@ -651,19 +688,28 @@ function renderTabs(){$("#tabs").innerHTML=[["all",tr("all")],...CATS.map(c=>[c,
 $("#tabs").onclick=e=>{const c=e.target.dataset.c;if(!c)return;cat=c;renderTabs();grid()};
 function grid(){$("#pgrid").innerHTML=P.filter(p=>cat=="all"||p.cat==cat).map(p=>`<a class="pcard" href="#${p.id}"><div class="pimg">${thumb(p.ch)}<img src="proyek/${p.id}.jpg" alt="" onload="if(this.naturalWidth>this.naturalHeight)this.classList.add('wide')" onerror="this.remove()"></div><div class="pbody"><div class="role">${p.role}</div><h3>${L(p.t)}</h3><p>${L(p.s)}</p><span class="pbtn">${tr("details")} &rarr;</span></div></a>`).join("")}
 
-function caseHTML(i){const p=P[i],pr=P[(i-1+P.length)%P.length],nx=P[(i+1)%P.length];
-return `<article class="cs"><a href="#proyek" class="back">${tr("back")}</a>
-<div class="label">${p.cat}</div><h1>${L(p.t)}</h1>
-<div class="meta"><span>${tr("role")} <b>${p.role}</b></span><span>${tr("dur")} <b>${L(p.dur)}</b></span><span>Tools <b>${p.tools.join(", ")}</b></span></div>
-<div class="exec"><h3>${tr("exec")}</h3><ul>${L(p.ex).map(x=>`<li>${x}</li>`).join("")}</ul></div>
-<h2>${tr("ctx")}</h2><p>${L(p.ctx)}</p>
-<h2>${tr("data")}</h2><p>${L(p.data)}</p>
-<h2>${tr("appr")}</h2><ol>${L(p.steps).map(x=>`<li>${x}</li>`).join("")}</ol>
-<div class="fig">${thumb(p.ch)}<img src="proyek/${p.id}.jpg" alt="" onerror="this.remove()"></div><p class="cap">${tr("fig")}</p>
-<h2>${tr("res")}</h2><div class="res">${p.res.map(([a,b])=>`<div><span class="num">${L(a)}</span><small>${L(b)}</small></div>`).join("")}</div>
-<h2>${tr("rec")}</h2><p>${L(p.rec)}</p>
-${p.docs?`<div class="links">${p.docs.map(([u,n])=>`<a href="${u}" target="_blank" rel="noopener">${ext}${L(n)}</a>`).join("")}</div>`:""}
-<div class="pn"><a href="#${pr.id}"><small>${tr("prev")}</small>${L(pr.t)}</a><a href="#${nx.id}" style="text-align:right"><small>${tr("next")}</small>${L(nx.t)}</a></div></article>`}
+/* Pratinjau di halaman detail: gambar di proyek/prev/<id>-1..3.jpg dan keterangannya */
+const PV={"sate-ratu-gibcc":[{id:"Issue Tree",en:"Issue Tree"},{id:"Customer Funnel",en:"Customer Funnel"},{id:"Payoff Matrix",en:"Payoff Matrix"}],
+ "tokopedia-analytics":[{id:"Query SQL",en:"SQL Query"},{id:"Dashboard Looker Studio",en:"Looker Studio Dashboard"},{id:"Hasil Analisis",en:"Analysis Result"}],
+ "agrinexa":[{id:"Fakta & Data",en:"Facts & Data"},{id:"Solusi G.R.O.W.",en:"G.R.O.W. Solution"},{id:"Model Bisnis",en:"Business Model"}],
+ "pawcation":[{id:"Desain Booking",en:"Booking Design"},{id:"Fitur CCTV",en:"CCTV Feature"},{id:"TAM–SAM–SOM",en:"TAM–SAM–SOM"}],
+ "mygame-isad":[{id:"Use Case Diagram",en:"Use Case Diagram"},{id:"Class Diagram",en:"Class Diagram"},{id:"Matriks CRUD",en:"CRUD Matrix"}]};
+function caseHTML(i){const p=P[i],pr=P[(i-1+P.length)%P.length],nx=P[(i+1)%P.length],pv=PV[p.id];
+const H=(n,k)=>`<h4 class="ch">${n?String(n).padStart(2,"0")+" ":""}${tr(k)}</h4>`;
+return `<article class="cs2"><header class="chead"><div class="wrap"><div><h1>${L(p.t)}</h1><div class="cpills"><span>${p.role}</span><span>${p.cat}</span><span>${L(p.dur)}</span></div></div><a href="#proyek" class="cback">&larr; ${tr("back_p")}</a></div></header>
+<div class="wrap cgrid"><div>
+${H(1,"ctx")}<p class="lead">${L(p.ctx)}</p>
+${H(2,"contrib")}<ul class="clist">${L(p.ex).map(x=>`<li>${x}</li>`).join("")}</ul>
+${H(3,"data")}<p>${L(p.data)}</p>
+${H(4,"rec")}<p>${L(p.rec)}</p>
+${H(0,"deliv")}<div class="ctags2">${p.tools.map(t=>`<span>${t}</span>`).join("")}</div>
+${p.docs?`<div class="cbtns">${p.docs.map(([u,n])=>`<a href="${u}" target="_blank" rel="noopener">${L(n)} &#8599;</a>`).join("")}</div>`:""}
+</div><div>
+${H(0,"appr")}<div class="csteps">${L(p.steps).map((x,k)=>`<div><span class="num">${String(k+1).padStart(2,"0")}</span><p>${x}</p></div>`).join("")}</div>
+${H(0,"res")}<div class="cres">${p.res.map(([a,b])=>`<div><span class="num">${L(a)}</span><small>${L(b)}</small></div>`).join("")}</div>
+${H(0,"preview")}<div class="cprev">${pv?pv.map((c,k)=>`<a href="proyek/prev/${p.id}-${k+1}.jpg" target="_blank" rel="noopener"><div><img src="proyek/prev/${p.id}-${k+1}.jpg" alt="" loading="lazy"></div><span>${L(c)}</span></a>`).join(""):`<a><div>${thumb(p.ch)}<img src="proyek/${p.id}.jpg" alt="" onerror="this.remove()"></div><span>${tr("fig")}</span></a>`}</div>
+</div></div>
+<div class="wrap"><div class="pn"><a href="#${pr.id}"><small>${tr("prev")}</small>${L(pr.t)}</a><a href="#${nx.id}" style="text-align:right"><small>${tr("next")}</small>${L(nx.t)}</a></div></div></article>`}
 function route(scroll){const h=location.hash.slice(1),i=P.findIndex(p=>p.id===h);
  if(i>=0){$("#case").innerHTML=caseHTML(i);document.body.classList.add("case-open");if(scroll!==false)scrollTo(0,0)}
  else if(document.body.classList.contains("case-open")){document.body.classList.remove("case-open");const t=document.getElementById(h);if(t)setTimeout(()=>t.scrollIntoView(),0)}}
