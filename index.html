@@ -190,11 +190,12 @@ body.case-open #case{display:block}
 @media(max-width:560px){.res{grid-template-columns:1fr}}
 /* halaman detail proyek: header maroon + dua kolom */
 .cs2{padding-bottom:80px}
-.chead{background:var(--text);color:var(--bg);padding:118px 0 30px}
-.chead .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.chead h1{font-size:clamp(2rem,4vw,3rem);line-height:1.05;color:var(--bg)}
+.chead{position:static;background:var(--text);color:var(--bg);padding:120px 0 32px}
+.chead .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.chead .wrap>div{min-width:0;flex:1}
+.chead h1{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.1;color:var(--bg)}
 .cpills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.cpills span{border:1px solid rgba(249,246,241,.45);border-radius:999px;padding:4px 14px;font-size:.88rem}
+.cpills span{border:1px solid rgba(249,246,241,.45);border-radius:999px;padding:4px 14px;font-size:.85rem;color:var(--bg)}
 .cback{border:1.5px solid var(--bg);border-radius:999px;padding:11px 24px;color:var(--bg);font-weight:500;white-space:nowrap}
 .cback:hover{background:var(--bg);color:var(--text)}
 .cgrid{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;padding-top:56px}
@@ -209,13 +210,13 @@ body.case-open #case{display:block}
 .cbtns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .cbtns a{border:1.5px solid var(--text);border-radius:999px;padding:11px 22px;font-weight:500}
 .cbtns a:hover{background:var(--text);color:var(--bg)}
-.csteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-.csteps div{background:#F3ECE3;border:1px solid var(--line);border-radius:14px;padding:16px}
-.csteps .num{font-family:"Instrument Serif",Georgia,serif;font-size:2rem;opacity:.6;line-height:1}
-.csteps p{font-size:.86rem;margin-top:10px;opacity:1}
+.csteps{display:flex;flex-direction:column;gap:10px}
+.csteps div{display:flex;gap:18px;align-items:center;background:#F3ECE3;border:1px solid var(--line);border-radius:14px;padding:14px 20px}
+.csteps .num{font-family:"Instrument Serif",Georgia,serif;font-size:1.9rem;opacity:.6;line-height:1;flex:none;width:40px}
+.csteps p{font-size:.95rem;margin:0;opacity:1}
 .cres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .cres div{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card)}
-.cres .num{display:block;font-size:1.6rem;line-height:1.15}
+.cres .num{display:block;font-size:1.45rem;line-height:1.15;overflow-wrap:anywhere}
 .cres small{color:var(--muted);font-size:.84rem}
 .cprev{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .cprev a{display:block;background:#F3ECE3;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center;color:var(--text)}
@@ -225,7 +226,7 @@ body.case-open #case{display:block}
 .cprev span{display:block;margin-top:10px;font-size:.92rem}
 .cprev .play{position:absolute;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;background:rgba(74,31,36,.85);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:1.1rem;padding-left:4px}
 .cprev a:hover{border-color:var(--acc2)}
-@media(max-width:900px){.cgrid{grid-template-columns:1fr;gap:20px}.cres,.cprev{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.chead .wrap{flex-direction:column;align-items:flex-start}.cgrid{grid-template-columns:1fr;gap:20px}.cres,.cprev{grid-template-columns:1fr 1fr}}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
 .links a{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 16px;color:var(--text);font-size:.9rem}
 .links a:hover{border-color:var(--acc)}
@@ -697,7 +698,7 @@ const PV={"sate-ratu-gibcc":[{id:"Issue Tree",en:"Issue Tree"},{id:"Customer Fun
  "mygame-isad":[{id:"Use Case Diagram",en:"Use Case Diagram"},{id:"Class Diagram",en:"Class Diagram"},{id:"Matriks CRUD",en:"CRUD Matrix"}]};
 function caseHTML(i){const p=P[i],pr=P[(i-1+P.length)%P.length],nx=P[(i+1)%P.length],pv=PV[p.id];
 const H=(n,k)=>`<h4 class="ch">${n?String(n).padStart(2,"0")+" ":""}${tr(k)}</h4>`;
-return `<article class="cs2"><header class="chead"><div class="wrap"><div><h1>${L(p.t)}</h1><div class="cpills"><span>${p.role}</span><span>${p.cat}</span><span>${L(p.dur)}</span></div></div><a href="#proyek" class="cback">&larr; ${tr("back_p")}</a></div></header>
+return `<article class="cs2"><div class="chead"><div class="wrap"><div><h1>${L(p.t)}</h1><div class="cpills"><span>${p.role}</span><span>${p.cat}</span><span>${L(p.dur)}</span></div></div><a href="#proyek" class="cback">&larr; ${tr("back_p")}</a></div></div>
 <div class="wrap cgrid"><div>
 ${H(1,"ctx")}<p class="lead">${L(p.ctx)}</p>
 ${H(2,"contrib")}<ul class="clist">${L(p.ex).map(x=>`<li>${x}</li>`).join("")}</ul>
