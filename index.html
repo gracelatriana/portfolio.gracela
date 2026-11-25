@@ -439,7 +439,7 @@ const T={
  i_lang:{id:"Bahasa",en:"Languages"},i_lang_v:{id:"Indonesia (native), English (profesional)",en:"Indonesian (native), English (professional)"},
  i_avail:{id:"Ketersediaan",en:"Availability"},i_avail_v:{id:"Satu bulan pemberitahuan",en:"One month notice"},
  sk_label:{id:"Keahlian",en:"Skills"},sk_h:{id:"Tools & Metode",en:"Tools & Methods"},
- sk_sub:{id:"Tools dan metode yang saya gunakan untuk analisis data, proses bisnis, manajemen proyek, dan rantai pasok.",en:"Tools and methods I use across data analysis, business processes, project management, and the supply chain."},
+ sk_sub:{id:"Tools dan metode yang saya gunakan untuk analisis data, business intelligence, analisis bisnis, dan manajemen proyek.",en:"Tools and methods I use across data analysis, business intelligence, business analysis, and project management."},
  cat:{id:"Kategori",en:"Category"},tools_n:"tools",sk_more:{id:"Lihat pengalaman kerja ↓",en:"Explore professional experience ↓"},
  adv:{id:"Mahir",en:"Advanced"},mid:{id:"Menengah",en:"Intermediate"},
  proj_h:{id:"Studi kasus pilihan",en:"Selected case studies"},all:{id:"Semua",en:"All"},
@@ -450,8 +450,8 @@ const T={
  fig:{id:"Gambar 1. Tampilan dashboard utama proyek (ganti dengan screenshot asli).",en:"Figure 1. Main project dashboard (replace with a real screenshot)."},
  report:{id:"Laporan PDF",en:"PDF Report"},prev:{id:"← Sebelumnya",en:"← Previous"},next:{id:"Berikutnya →",en:"Next →"},
  exp_h:{id:"Riwayat kerja dan pendidikan",en:"Work history and education"},
- exp_title:{id:"Pengalaman Profesional",en:"Professional Experience"},exp_sub:{id:"Pengalaman kerja di retail, logistik, dan fintech, serta latar belakang pendidikan.",en:"Work experience across retail, logistics, and fintech, plus my education background."},
- xp_more:{id:"Lihat proyek pilihan ↓",en:"Explore selected projects ↓"},t_full:"Full-time",t_intern:{id:"Magang",en:"Internship"},t_edu:{id:"Pendidikan",en:"Education"},
+ exp_title:{id:"Pengalaman Profesional",en:"Professional Experience"},exp_sub:{id:"Magang 12 bulan di Kalbe Farma, pengalaman kerja paruh waktu, dan latar belakang pendidikan.",en:"A 12-month internship at Kalbe Farma, part-time work, and my education background."},
+ xp_more:{id:"Lihat proyek pilihan ↓",en:"Explore selected projects ↓"},t_full:"Full-time",t_part:{id:"Paruh waktu",en:"Part-time"},t_intern:{id:"Magang",en:"Internship"},t_edu:{id:"Pendidikan",en:"Education"},
  certs_h:{id:"Sertifikasi",en:"Certifications"},th_cert:{id:"Sertifikat",en:"Certificate"},th_iss:{id:"Penerbit",en:"Issuer"},th_year:{id:"Tahun",en:"Year"},
  view_cert:{id:"Lihat Sertifikat",en:"View Certificate"},close:{id:"Tutup",en:"Close"},open_drive:{id:"Buka di Google Drive",en:"Open in Google Drive"},
  no_link:{id:"Link Google Drive untuk sertifikat ini belum diisi.",en:"The Google Drive link for this certificate has not been added yet."},
@@ -470,16 +470,15 @@ const T={
 };
 
 const SKILLS=[
- [{id:"Data & Analitik",en:"Data & Analytics"},[["SQL","adv"],["Excel / Power Query","adv"],["Python (Pandas)","mid"],[{id:"Statistik",en:"Statistics"},"mid"]]],
- ["Visualisasi & BI",[["Power BI / DAX","adv"],["Tableau","mid"],["Looker Studio","mid"]]],
- ["Business Analysis",[["Requirement Gathering","adv"],["BPMN","adv"],["User Story & BRD","adv"],["Jira","mid"]]],
- ["Project Management",[["Claude (AI-assisted development)","adv"],["VS Code","mid"],["GitHub","mid"],["Bug Tracking & UAT","adv"],["User Training","adv"]]],
- ["Supply Chain",[["Demand Forecasting","adv"],["Inventory Planning","adv"],["SAP MM","mid"],["Procurement","mid"]]]
+ [{id:"Analisis Data",en:"Data Analysis"},[["SQL Server (SSMS)","adv"],["BigQuery","adv"],["PostgreSQL","mid"],["Python (Colab, Jupyter)","mid"],["Excel (Pivot Tables, data cleaning)","adv"]]],
+ ["Business Intelligence",[["Metabase","adv"],["Looker Studio","adv"],["Power BI","mid"],["Tableau","mid"]]],
+ ["Business Analysis",[["Requirements Gathering","adv"],["SCQA & Issue Tree","adv"],["TAM–SAM–SOM","adv"],[{id:"Analisis Kompetitor",en:"Competitor Analysis"},"adv"],["Survey Design","adv"],["KPI Setting","adv"]]],
+ ["Project Management",[["Stakeholder Management","adv"],["Change Request Management","adv"],["Bug Tracking","adv"],["User Acceptance Testing","adv"],["Data Migration","adv"],["User Training","adv"],["Agile/Scrum","mid"],["Jira","mid"],["Notion","adv"]]],
+ ["AI & Development",[["Claude (AI-assisted development)","adv"],["VS Code","adv"],["GitHub","adv"],["Figma","adv"]]]
 ];
-SKILLS[1][0]={id:"Visualisasi & BI",en:"Visualization & BI"};
 
 /* Ikon tools dari simpleicons.org (nama slug). Tool tanpa ikon tampil sebagai inisial. */
-const ICON={"SQL":"mysql","Excel / Power Query":"microsoftexcel","Python (Pandas)":"pandas","Power BI / DAX":"powerbi","Tableau":"tableau","Looker Studio":"looker","Jira":"jira","SAP MM":"sap","Claude (AI-assisted development)":"claude","VS Code":"visualstudiocode","GitHub":"github"};
+const ICON={"SQL Server (SSMS)":"microsoftsqlserver","BigQuery":"googlebigquery","PostgreSQL":"postgresql","Python (Colab, Jupyter)":"python","Excel (Pivot Tables, data cleaning)":"microsoftexcel","Metabase":"metabase","Power BI":"powerbi","Tableau":"tableau","Looker Studio":"looker","Jira":"jira","Notion":"notion","Figma":"figma","Claude (AI-assisted development)":"claude","VS Code":"visualstudiocode","GitHub":"github"};
 const CATS=["Data Analysis","Business Analysis","Project Management","Supply Chain"];
 
 const P=[
@@ -556,10 +555,10 @@ const P=[
 ];
 
 const XP=[
- [{id:"2024 sampai sekarang",en:"2024 to present"},"Data Analyst","PT Nusantara Retailindo, Jakarta",{id:["Membangun 12 dashboard Power BI untuk 80+ pengguna","Mengotomatisasi laporan mingguan, hemat 5 jam kerja per minggu","Analisis promo yang menaikkan margin kategori 4%"],en:["Built 12 Power BI dashboards for 80+ users","Automated weekly reports, saving 5 work hours per week","Promotion analysis that raised category margin by 4%"]}],
- [{id:"2023 sampai 2024",en:"2023 to 2024"},"Supply Chain Analyst","PT Logistik Maju Bersama, Bekasi",{id:["Menurunkan stockout 31% dengan model forecasting","Mengelola analisis inventory untuk 1.500+ SKU"],en:["Reduced stockouts by 31% with a forecasting model","Managed inventory analysis for 1,500+ SKUs"]}],
- [{id:"2022, 6 bulan",en:"2022, 6 months"},"Business Analyst Intern","PT Fintech Digital, Jakarta",{id:["Menulis 30+ user story dan memfasilitasi sprint review","Memetakan proses onboarding nasabah dengan BPMN"],en:["Wrote 30+ user stories and facilitated sprint reviews","Mapped the customer onboarding process in BPMN"]}],
- [{id:"2018 sampai 2022",en:"2018 to 2022"},{id:"S1 Teknik Industri",en:"B.Eng. Industrial Engineering"},{id:"Universitas Indonesia, IPK 3,65",en:"Universitas Indonesia, GPA 3.65"},{id:["Skripsi: optimasi persediaan dengan EOQ dan simulasi Monte Carlo"],en:["Thesis: inventory optimization with EOQ and Monte Carlo simulation"]}]
+ [{id:"Agustus 2026 sampai sekarang",en:"August 2026 to present"},"Data Analyst Intern (Project Management)",{id:"Kalbe Farma, Corporate IT – IT Service Management",en:"Kalbe Farma, Corporate IT – IT Service Management"},{id:["Mengembangkan EPPM, aplikasi IT service management internal pengganti Ivanti, dengan AI-assisted development (Claude, VS Code, GitHub)","Mengelola bug-tracking log bersama QA dan supervisor IT, serta menguji ulang setiap perbaikan sampai disetujui","Mengumpulkan permintaan fitur dari user saat demo dan meeting mingguan, menilainya terhadap SOP, lalu mengimplementasikan yang disetujui","Memigrasikan data tiket dari Ivanti ke EPPM dan melatih end user menggunakan sistem baru"],en:["Developed EPPM, an in-house IT service management app replacing Ivanti, through AI-assisted development (Claude, VS Code, GitHub)","Managed a bug-tracking log with QA and IT supervisors and retested every fix until approved","Gathered feature requests from users in demos and weekly meetings, assessed them against SOPs, and implemented approved changes","Migrated ticket data from Ivanti to EPPM and trained end users on the new system"]}],
+ [{id:"Februari 2026 sampai Juli 2026",en:"February 2026 to July 2026"},"Data Analyst Intern (Data Analysis)",{id:"Kalbe Farma, Corporate IT – IT Service Management",en:"Kalbe Farma, Corporate IT – IT Service Management"},{id:["Menganalisis tiket service request dan insiden dengan SQL Server Management Studio dan Excel untuk melihat tren, alasan waiting, dan performa SLA","Membangun dashboard Metabase dan laporan bulanan untuk monitoring layanan tim ITSM","Mendukung validasi data agar laporan SLA akurat dan konsisten"],en:["Analyzed IT service request and incident tickets with SQL Server Management Studio and Excel to identify trends, waiting reasons, and SLA performance","Built Metabase dashboards and monthly reports used by the ITSM team for service monitoring","Supported data validation to keep SLA reports accurate and consistent"]}],
+ [{id:"April 2025 sampai Januari 2026",en:"April 2025 to January 2026"},"Part-Time Marketing Promotion Team","Bina Nusantara University",{id:["Mempresentasikan program akademik dan kehidupan kampus BINUS kepada calon mahasiswa melalui presentasi sekolah dan campus tour"],en:["Presented BINUS academic programs and student life to prospective students through school presentations and guided campus tours"]}],
+ [{id:"September 2023 sampai sekarang",en:"September 2023 to present"},{id:"S1 Sistem Informasi, Business Intelligence",en:"Bachelor of Information Systems, Business Intelligence"},{id:"Universitas Bina Nusantara (BINUS), IPK 3,67 / 4,00",en:"Universitas Bina Nusantara (BINUS), GPA 3.67 / 4.00"},{id:["Penulis tunggal paper ICIC 2026 tentang perbandingan model YOLOv8n, MobileNetV3-Small, dan ResNet-18 untuk pengenalan obat"],en:["Sole author of an ICIC 2026 paper comparing YOLOv8n, MobileNetV3-Small, and ResNet-18 for pill recognition"]}]
 ];
 
 /* Sertifikat: [nama, penerbit, tahun, link Google Drive]
@@ -640,7 +639,7 @@ window.addEventListener("hashchange",()=>route());
 
 function renderStatic(){
  $("#skills").innerHTML=SKILLS.map(([h,l])=>`<div class="skrow"><div><div class="cat">${tr("cat")} · ${l.length} ${tr("tools_n")}</div><h3>${L(h)}</h3></div><div class="chips">${l.map(([a,b])=>{const n=L(a),k=ICON[n]||ICON[a.id||a];const ini=`<span class="ini">${n.replace(/[^A-Za-z ]/g,"").split(" ").filter(Boolean).map(w=>w[0]).join("").slice(0,2).toUpperCase()}</span>`;return `<span class="chip ${b}">${k?`<img src="https://cdn.simpleicons.org/${k}" alt="" onerror="this.outerHTML='${ini.replace(/"/g,"&quot;")}'">`:ini}${n}${b==="mid"?`<span class="tag">${tr("mid")}</span>`:""}</span>`}).join("")}</div></div>`).join("");
- $("#xp").innerHTML=XP.map(([w,t,o,l],i)=>{const ty=i===XP.length-1?"t_edu":/intern/i.test(L(t))?"t_intern":"t_full";return `<article><div class="top-row"><time>${L(w)}</time><span class="type">${tr(ty)}</span></div><h3>${L(t)}</h3><div class="org">${L(o)}</div><ul>${L(l).map(x=>`<li>${x}</li>`).join("")}</ul></article>`}).join("");
+ $("#xp").innerHTML=XP.map(([w,t,o,l],i)=>{const ty=i===XP.length-1?"t_edu":/intern/i.test(L(t))?"t_intern":/part-time/i.test(L(t))?"t_part":"t_full";return `<article><div class="top-row"><time>${L(w)}</time><span class="type">${tr(ty)}</span></div><h3>${L(t)}</h3><div class="org">${L(o)}</div><ul>${L(l).map(x=>`<li>${x}</li>`).join("")}</ul></article>`}).join("");
  $("#certs").innerHTML=CERTS.map(([n,o,y],i)=>`<tr><td>${n}</td><td class="hide muted">${o}</td><td class="num" style="font-weight:500">${y}</td><td style="text-align:right;white-space:nowrap"><a href="#sertifikat" data-cert="${i}">${tr("view_cert")}</a></td></tr>`).join("");
 }
 
