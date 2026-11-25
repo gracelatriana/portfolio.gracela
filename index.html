@@ -644,10 +644,17 @@ function renderStatic(){
  $("#certs").innerHTML=CERTS.map(([n,o,y],i)=>`<tr><td>${n}</td><td class="hide muted">${o}</td><td class="num" style="font-weight:500">${y}</td><td style="text-align:right;white-space:nowrap"><a href="#sertifikat" data-cert="${i}">${tr("view_cert")}</a></td></tr>`).join("");
 }
 
+/* Pratinjau CV: isinya disamakan dengan cv/CV_Gracela_Triana_ATS.pdf */
 function cv(){const keep=LANG;LANG=cvLang;
- $("#sheet").innerHTML=`<h4>Gracela Triana</h4><div class="r">Data Analyst · Business Analyst · Supply Chain</div><div class="c">Jakarta · gracelatriana04049@gmail.com · linkedin.com/in/gracela-triana</div>
-<h5>${tr("cv_sum")}</h5><p>${tr("cv_text")}</p><h5>${tr("cv_exp")}</h5>${XP.slice(0,3).map(([w,t,o,li])=>`<div class="row">${L(t)}, ${L(o).split(",")[0]}<span>${L(w)}</span></div><ul>${L(li).map(x=>`<li>${x}</li>`).join("")}</ul>`).join("")}
-<h5>${tr("cv_edu")}</h5><div class="row">${L(XP[3][1])}, ${L(XP[3][2])}<span>${L(XP[3][0])}</span></div><h5>${tr("cv_sk")}</h5><p>${SKILLS.flatMap(s=>s[1].map(x=>L(x[0]))).join(", ")}</p>`;
+ const R=(t,w,li)=>`<div class="row">${t}<span>${w}</span></div>${li?`<ul>${li.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}`;
+ $("#sheet").innerHTML=`<h4>Gracela Triana</h4><div class="r">Data Analysis · Business Analysis · Project Management</div><div class="c">Jakarta · gracelatriana04049@gmail.com · linkedin.com/in/gracela-triana</div>
+<h5>Profile</h5><p>Information Systems student at BINUS University (GPA 3.67/4.00) with hands-on experience in data analysis, business analysis, and project management, including a 12-month internship at Kalbe Farma.</p>
+<h5>Education</h5>${R("Bachelor of Information Systems, Business Intelligence, BINUS University, GPA 3.67","2023 to present")}
+<h5>Experience</h5>${R("Data Analyst Intern (Project Management), Kalbe Farma","Aug 2026 to present",["Developed EPPM, an in-house ITSM app replacing Ivanti, with AI-assisted development","Managed bug tracking with QA and retested every fix until approved","Migrated ticket data from Ivanti and trained end users on EPPM"])}
+${R("Data Analyst Intern (Data Analysis), Kalbe Farma","Feb to Jul 2026",["Analyzed service tickets with SQL Server and Excel for trends and SLA performance","Built Metabase dashboards and monthly reports for the ITSM team"])}
+${R("Part-Time Marketing Promotion Team, BINUS University","2025 to 2026",["Presented BINUS programs through school presentations and campus tours"])}
+<h5>Projects & Achievements</h5><ul><li>Top 10 Semifinalist, Grand Impact Business Case Competition (Sate Ratu), 2026</li><li>Top 30 Finalist, BINUS Business Idea Competition (AgriNexa), 2026</li><li>Sole author, ICIC 2026 paper on pill recognition models (APTIKOM & IEEE)</li><li>Finalist, IFEST Data Analysis Competition, Universitas Padjadjaran, 2025</li></ul>
+<h5>Skills</h5><p>SQL (SSMS, BigQuery, PostgreSQL), Python, Excel, Metabase, Looker Studio, Power BI, Tableau, Requirements Gathering, SCQA, TAM–SAM–SOM, Stakeholder Management, Bug Tracking, UAT, Data Migration, Agile/Scrum, Jira, Claude (AI-assisted development), VS Code, GitHub, Figma</p>`;
  LANG=keep}
 
 function setLang(l,save){
