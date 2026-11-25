@@ -7,7 +7,7 @@ media:
     output: foto
     extensions: [png]
   - name: cv
-    label: CV (CV-ID.pdf dan CV-EN.pdf)
+    label: CV (nama file harus CV_Gracela_Triana_ATS.pdf)
     input: cv
     output: cv
     extensions: [pdf]

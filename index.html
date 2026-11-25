@@ -366,7 +366,7 @@ footer .big{width:100%;font-family:"Instrument Serif",Georgia,serif;font-weight:
     <div class="cvgrid">
       <div class="rv">
         <p class="muted" data-t="cv_p"></p>
-        <div class="seg"><button data-l="id">Indonesia</button><button data-l="en">English</button></div><br>
+        <br>
         <button class="btn btn-solid" id="dl"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span data-t="dl_pdf"></span></button>
         <p class="cvnote" id="cvnote" data-t="cv_note"></p>
       </div>
@@ -456,8 +456,8 @@ const T={
  view_cert:{id:"Lihat Sertifikat",en:"View Certificate"},close:{id:"Tutup",en:"Close"},open_drive:{id:"Buka di Google Drive",en:"Open in Google Drive"},
  no_link:{id:"Link Google Drive untuk sertifikat ini belum diisi.",en:"The Google Drive link for this certificate has not been added yet."},
  cv_label:{id:"CV & Kontak",en:"CV & Contact"},
- cv_p:{id:"Ringkasan pengalaman dan keahlian dalam satu halaman. Tersedia dalam dua bahasa.",en:"A one-page summary of my experience and skills. Available in two languages."},
- dl_pdf:"Download CV (PDF)",cv_note:{id:"Format PDF, 1 halaman.",en:"PDF format, 1 page."},
+ cv_p:{id:"Ringkasan pengalaman, proyek, dan keahlian saya. CV tersedia dalam bahasa Inggris.",en:"A summary of my experience, projects, and skills."},
+ dl_pdf:"Download CV (PDF)",cv_note:{id:"Format PDF, 2 halaman (bahasa Inggris).",en:"PDF format, 2 pages."},
  cv_demo:{id:"Pratinjau: setelah di-hosting, tombol ini mengunduh file PDF dari folder /cv/.",en:"Preview: once hosted, this button downloads the PDF from the /cv/ folder."},
  reply:{id:"Saya biasanya membalas dalam satu hari kerja.",en:"I usually reply within one business day."},
  ct_label:{id:"Terima kasih sudah melihat portofolio saya",en:"Thank you for exploring my portfolio"},ct_h:{id:"Mari Wujudkan Keputusan Berbasis Data.",en:"Let's Build Data-Driven Decisions."},
@@ -645,11 +645,10 @@ function renderStatic(){
 }
 
 function cv(){const keep=LANG;LANG=cvLang;
- $("#sheet").innerHTML=`<h4>Gracela Triana</h4><div class="r">Data Analyst · Business Analyst · Supply Chain</div><div class="c">Jakarta · gracela.triana@email.com · linkedin.com/in/gracelatriana</div>
+ $("#sheet").innerHTML=`<h4>Gracela Triana</h4><div class="r">Data Analyst · Business Analyst · Supply Chain</div><div class="c">Jakarta · gracelatriana04049@gmail.com · linkedin.com/in/gracela-triana</div>
 <h5>${tr("cv_sum")}</h5><p>${tr("cv_text")}</p><h5>${tr("cv_exp")}</h5>${XP.slice(0,3).map(([w,t,o,li])=>`<div class="row">${L(t)}, ${L(o).split(",")[0]}<span>${L(w)}</span></div><ul>${L(li).map(x=>`<li>${x}</li>`).join("")}</ul>`).join("")}
 <h5>${tr("cv_edu")}</h5><div class="row">${L(XP[3][1])}, ${L(XP[3][2])}<span>${L(XP[3][0])}</span></div><h5>${tr("cv_sk")}</h5><p>${SKILLS.flatMap(s=>s[1].map(x=>L(x[0]))).join(", ")}</p>`;
- LANG=keep;$$(".seg button").forEach(b=>b.classList.toggle("on",b.dataset.l===cvLang))}
-$$(".seg button").forEach(b=>b.onclick=()=>{cvLang=b.dataset.l;cv()});
+ LANG=keep}
 
 function setLang(l,save){
  LANG=l;cvLang=l;document.documentElement.lang=l;
@@ -676,8 +675,8 @@ $("#cmClose").onclick=closeCert;
 $("#certModal").onclick=e=>{if(e.target.id==="certModal")closeCert()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCert()});
 
-/* CV: file diambil dari folder cv/ -> CV-ID.pdf dan CV-EN.pdf */
-$("#dl").onclick=async()=>{const url=`cv/CV-${cvLang.toUpperCase()}.pdf`;
+/* CV: file di folder cv/ */
+$("#dl").onclick=async()=>{const url="cv/CV_Gracela_Triana_ATS.pdf";
  try{const r=await fetch(url,{method:"HEAD"});if(!r.ok){$("#cvnote").textContent=(LANG==="id"?"File belum ada. Simpan CV kamu di ":"File not found. Save your CV at ")+url;return}}catch(e){}
  window.open(url,"_blank")};
 $$(".copy[data-c]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.c);b.textContent=tr("copied")}catch(e){}setTimeout(()=>b.textContent=tr("copy"),1800)});
