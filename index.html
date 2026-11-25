@@ -711,7 +711,7 @@ ${H(0,"appr")}<div class="csteps">${L(p.steps).map((x,k)=>`<div><span class="num
 ${H(0,"res")}<div class="cres">${p.res.map(([a,b])=>`<div><span class="num">${L(a)}</span><small>${L(b)}</small></div>`).join("")}</div>
 ${H(0,"preview")}<div class="cprev">${pv?pv.map((c,k)=>{const [cap,u,vid]=Array.isArray(c)?c:[c];const im=`proyek/prev/${p.id}-${k+1}.jpg`;return `<a href="${u||im}" target="_blank" rel="noopener"><div><img src="${im}" alt="" loading="lazy">${vid?'<i class="play">&#9654;</i>':""}</div><span>${L(cap)}</span></a>`}).join(""):`<a><div>${thumb(p.ch)}<img src="proyek/${p.id}.jpg" alt="" onerror="this.remove()"></div><span>${tr("fig")}</span></a>`}</div>
 </div></div>
-<div class="wrap"><div class="pn"><a href="#${pr.id}"><small>${tr("prev")}</small>${L(pr.t)}</a><a href="#${nx.id}" style="text-align:right"><small>${tr("next")}</small>${L(nx.t)}</a></div></div></article>`}
+</article>`}
 function route(scroll){const h=location.hash.slice(1),i=P.findIndex(p=>p.id===h);
  if(i>=0){$("#case").innerHTML=caseHTML(i);document.body.classList.add("case-open");if(scroll!==false)scrollTo(0,0)}
  else if(document.body.classList.contains("case-open")){document.body.classList.remove("case-open");const t=document.getElementById(h);if(t)setTimeout(()=>t.scrollIntoView(),0)}}
