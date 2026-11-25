@@ -148,6 +148,20 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .ctags{margin-top:16px;display:flex;gap:6px;flex-wrap:wrap;font-size:0}
 .ctags{font-size:.78rem;color:var(--muted);font-family:Inter,sans-serif}
 @media(hover:none){.ov{display:none}.mres{display:block}}
+/* kartu proyek horizontal: gambar portrait kiri, teks kanan */
+.pcard{display:grid;grid-template-columns:200px 1fr;gap:28px;background:#F3ECE3;border:1px solid var(--line);border-radius:24px;padding:24px;color:inherit;transition:transform .3s,box-shadow .3s}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(74,31,36,.12)}
+.pimg{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.pimg svg{width:100%;height:100%;display:block;filter:sepia(.25)}
+.pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;background:var(--card)}
+.pimg img.wide{object-fit:contain;object-position:center;padding:8px}
+.pbody{display:flex;flex-direction:column;min-width:0}
+.pbody .role{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2);font-weight:600}
+.pbody h3{font-size:clamp(1.4rem,2vw,1.8rem);line-height:1.15;margin:10px 0 12px}
+.pbody p{color:var(--text);opacity:.85;font-size:.98rem;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pbody .pbtn{margin-top:auto;align-self:flex-start;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--text);border-radius:999px;padding:11px 22px;font-weight:500;font-size:.95rem;transition:background .25s,color .25s}
+.pcard:hover .pbtn{background:var(--text);color:var(--bg)}
+@media(max-width:560px){.pcard{grid-template-columns:1fr}.pimg{aspect-ratio:4/3}.pbody .pbtn{margin-top:18px}}
 
 /* case study */
 #case{display:none}
@@ -442,7 +456,7 @@ const T={
  cat:{id:"Kategori",en:"Category"},tools_n:"tools",sk_more:{id:"Lihat pengalaman kerja ↓",en:"Explore professional experience ↓"},
  adv:{id:"Mahir",en:"Advanced"},mid:{id:"Menengah",en:"Intermediate"},
  proj_h:{id:"Studi kasus pilihan",en:"Selected case studies"},all:{id:"Semua",en:"All"},
- see_case:{id:"Lihat studi kasus →",en:"View case study →"},
+ see_case:{id:"Lihat studi kasus →",en:"View case study →"},details:{id:"Lihat Detail Proyek",en:"View Project Details"},
  back:{id:"← Kembali ke proyek",en:"← Back to projects"},role:{id:"Peran",en:"Role"},dur:{id:"Durasi",en:"Duration"},
  exec:{id:"Ringkasan Eksekutif",en:"Executive Summary"},ctx:{id:"Konteks dan masalah",en:"Context and problem"},data:"Data",
  appr:{id:"Pendekatan",en:"Approach"},res:{id:"Hasil",en:"Results"},rec:{id:"Rekomendasi",en:"Recommendation"},
@@ -469,15 +483,20 @@ const T={
 };
 
 const SKILLS=[
- [{id:"Analisis Data",en:"Data Analysis"},[["SQL Server (SSMS)","adv"],["BigQuery","adv"],["PostgreSQL","mid"],["Python (Colab, Jupyter)","mid"],["Excel (Pivot Tables, data cleaning)","adv"]]],
+ [{id:"Analisis Data",en:"Data Analysis"},[["SQL Server","adv"],["BigQuery","adv"],["Microsoft Excel","adv"],["PostgreSQL","mid"],["Python","mid"]]],
  ["Business Intelligence",[["Metabase","adv"],["Looker Studio","adv"],["Power BI","mid"],["Tableau","mid"]]],
  ["Business Analysis",[["Requirements Gathering","adv"],["SCQA & Issue Tree","adv"],["TAM–SAM–SOM","adv"],[{id:"Analisis Kompetitor",en:"Competitor Analysis"},"adv"],["Survey Design","adv"],["KPI Setting","adv"]]],
- ["Project Management",[["Stakeholder Management","adv"],["Change Request Management","adv"],["Bug Tracking","adv"],["User Acceptance Testing","adv"],["Data Migration","adv"],["User Training","adv"],["Agile/Scrum","mid"],["Jira","mid"],["Notion","adv"]]],
- ["AI & Development",[["Claude (AI-assisted development)","adv"],["VS Code","adv"],["GitHub","adv"],["Figma","adv"]]]
+ [{id:"Manajemen Proyek",en:"Project Management"},[["Jira","mid"],["Notion","adv"],["Stakeholder Management","adv"],["Change Request","adv"],["Bug Tracking","adv"],["UAT","adv"],["Data Migration","adv"],["User Training","adv"],["Agile / Scrum","mid"]]],
+ [{id:"AI & Pengembangan",en:"AI & Development"},[["Claude","adv"],["VS Code","adv"],["GitHub","adv"],["Figma","adv"]]]
 ];
 
-/* Ikon tools dari simpleicons.org (nama slug). Tool tanpa ikon tampil sebagai inisial. */
-const ICON={"SQL Server (SSMS)":"microsoftsqlserver","BigQuery":"googlebigquery","PostgreSQL":"postgresql","Python (Colab, Jupyter)":"python","Excel (Pivot Tables, data cleaning)":"microsoftexcel","Metabase":"metabase","Power BI":"powerbi","Tableau":"tableau","Looker Studio":"looker","Jira":"jira","Notion":"notion","Figma":"figma","Claude (AI-assisted development)":"claude","VS Code":"visualstudiocode","GitHub":"github"};
+/* Ikon dari api.iconify.design (logo berwarna untuk tools, ikon garis untuk metode). */
+const IC=s=>"https://api.iconify.design/"+s+".svg",MI=s=>IC("lucide/"+s)+"?color=%234A1F24";
+const ICON={"SQL Server":IC("devicon/microsoftsqlserver"),"BigQuery":"https://cdn.simpleicons.org/googlebigquery","Microsoft Excel":IC("vscode-icons/file-type-excel"),"PostgreSQL":IC("logos/postgresql"),"Python":IC("logos/python"),
+ "Metabase":IC("logos/metabase"),"Looker Studio":IC("logos/looker-icon"),"Power BI":IC("logos/microsoft-power-bi"),"Tableau":IC("logos/tableau-icon"),
+ "Jira":IC("logos/jira"),"Notion":IC("logos/notion-icon"),"Claude":IC("logos/claude-icon"),"VS Code":IC("logos/visual-studio-code"),"GitHub":IC("logos/github-icon"),"Figma":IC("logos/figma"),
+ "Requirements Gathering":MI("clipboard-list"),"SCQA & Issue Tree":MI("git-branch"),"TAM–SAM–SOM":MI("target"),"Competitor Analysis":MI("search"),"Survey Design":MI("file-question"),"KPI Setting":MI("bar-chart-3"),
+ "Stakeholder Management":MI("users"),"Change Request":MI("file-diff"),"Bug Tracking":MI("bug"),"UAT":MI("check-circle"),"Data Migration":MI("database-zap"),"User Training":MI("graduation-cap"),"Agile / Scrum":MI("repeat")};
 const CATS=["Data Analysis","Business Analysis","Project Management"];
 
 const P=[
@@ -630,7 +649,7 @@ function thumb(type){
 let cat="all";
 function renderTabs(){$("#tabs").innerHTML=[["all",tr("all")],...CATS.map(c=>[c,c])].map(([k,v])=>`<button data-c="${k}" class="${k==cat?"on":""}">${v}</button>`).join("")}
 $("#tabs").onclick=e=>{const c=e.target.dataset.c;if(!c)return;cat=c;renderTabs();grid()};
-function grid(){$("#pgrid").innerHTML=P.filter(p=>cat=="all"||p.cat==cat).map(p=>`<a class="card" href="#${p.id}"><div class="thumb">${thumb(p.ch)}<img src="proyek/${p.id}.jpg" alt="" onerror="this.remove()"><div class="ov"><span class="num">${L(p.n)}</span><small>${L(p.nl)}</small><em>${tr("see_case")}</em></div></div><div class="cbody"><div class="label">${p.cat}</div><h3>${L(p.t)}</h3><p>${L(p.s)}</p><div class="mres"><b class="num">${L(p.n)}</b> ${L(p.nl).toLowerCase()}</div><div class="ctags">${p.tools.slice(0,3).join(" · ")}</div></div></a>`).join("")}
+function grid(){$("#pgrid").innerHTML=P.filter(p=>cat=="all"||p.cat==cat).map(p=>`<a class="pcard" href="#${p.id}"><div class="pimg">${thumb(p.ch)}<img src="proyek/${p.id}.jpg" alt="" onload="if(this.naturalWidth>this.naturalHeight)this.classList.add('wide')" onerror="this.remove()"></div><div class="pbody"><div class="role">${p.role}</div><h3>${L(p.t)}</h3><p>${L(p.s)}</p><span class="pbtn">${tr("details")} &rarr;</span></div></a>`).join("")}
 
 function caseHTML(i){const p=P[i],pr=P[(i-1+P.length)%P.length],nx=P[(i+1)%P.length];
 return `<article class="cs"><a href="#proyek" class="back">${tr("back")}</a>
